@@ -4,6 +4,8 @@ import "@fontsource/roboto";
 import homeStyle from "../styles/Home.module.scss";
 import Slider from "@/components/Slider";
 import FeaturedProducts from "@/components/FeaturedProducts";
+import Categories from "@/components/Categories";
+import Contact from "@/components/Contact";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,7 +14,9 @@ export default function Home() {
     <div className={homeStyle.home}>
       <Slider />
       <FeaturedProducts type="populaires" />
+      <Categories />
       <FeaturedProducts type="tendances" />
+      <Contact />
     </div>
   );
 }
