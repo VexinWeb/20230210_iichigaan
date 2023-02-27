@@ -1,19 +1,20 @@
 import React from "react";
-import Meta from "../components/Meta";
-import productsStyle from "../styles/Products.module.scss";
-import styles from "../styles/Layout.module.scss";
-import data from "../components/data.json";
+import Meta from "../../components/Meta";
+import productsStyle from "../../styles/Products.module.scss";
+import styles from "../../styles/Layout.module.scss";
+import data from "../../components/data.json";
 import Image from "next/image";
-import List from "../components/List";
+import List from "../../components/List";
 // import { useParams } from "react-router-dom";
+import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 
 const Products = () => {
-  // const param = useParams();
+  // const param = useSearchParams();
   // console.log(param);
   const router = useRouter();
-  const { id } = router.query;
-  console.log(id); // à revoir
+  const productsId = router.query.id;
+  console.log("productsId: ", productsId); // à revoir, pourquoi "undefined" ?
 
   return (
     <main className={styles.main}>
