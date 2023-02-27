@@ -1,7 +1,7 @@
 import React from "react";
-import Meta from "../components/Meta";
-import productStyle from "../styles/Product.module.scss";
-import styles from "../styles/Layout.module.scss";
+import Meta from "../../components/Meta";
+import productStyle from "../../styles/Product.module.scss";
+import styles from "../../styles/Layout.module.scss";
 
 const Product = () => {
   return (
