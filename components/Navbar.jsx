@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import navbarStyle from "../styles/Navbar.module.scss";
 import Image from "next/Image";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -8,20 +8,23 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
+import Cart from "./Cart";
 
 const RedSearchIcon = styled(SearchIcon)({
   color: "red",
 });
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
   return (
     <div className={navbarStyle.navbar}>
       <div className={navbarStyle.wrapper}>
         <div className={navbarStyle.left}>
           <div className={navbarStyle.item}>
             <Image
-              src="/english.png"
-              alt="english flag"
+              src="/french.png"
+              alt="French flag"
               style={{ objectFit: "cover" }}
               width={20}
               height={15}
@@ -29,13 +32,13 @@ const Navbar = () => {
             <KeyboardArrowDownIcon />
           </div>
           <div className={navbarStyle.item}>
-            <Link href="products/1">Vêtements</Link>
+            <Link href="/products/a">Vêtements</Link>
           </div>
           <div className={navbarStyle.item}>
-            <Link href="products/2">Accessoires</Link>
+            <Link href="/products/b">Accessoires</Link>
           </div>
           <div className={navbarStyle.item}>
-            <Link href="products/3">Nouveautés</Link>
+            <Link href="/products/c">Nouveautés</Link>
           </div>
         </div>
         <div className={navbarStyle.center}>
@@ -52,16 +55,23 @@ const Navbar = () => {
             <Link href="/">Contact</Link>
           </div>
           <div className={navbarStyle.icons}>
-            <SearchIcon className={navbarStyle.rightIcon} />
-            <PersonOutlineIcon />
-            <FavoriteBorderOutlinedIcon />
-            <div className={navbarStyle.cartIcon}>
-              <ShoppingCartIcon />
+            <SearchIcon
+              className={navbarStyle.rightIcon}
+              style={{ fill: "gray" }}
+            />
+            <PersonOutlineIcon style={{ fill: "gray" }} />
+            <FavoriteBorderOutlinedIcon style={{ fill: "gray" }} />
+            <div
+              className={navbarStyle.cartIcon}
+              onClick={() => setOpen(!open)}
+            >
+              <ShoppingCartIcon style={{ fill: "gray" }} />
               <span>0</span>
             </div>
           </div>
         </div>
       </div>
+      {open && <Cart />}
     </div>
   );
 };

@@ -1,5 +1,7 @@
+@import "colors"; 
+
 .contact {
-    background-color: #E79FCD;
+    background-color: $color-perso;
     color: white;
     padding: 15px;
     display: flex;
@@ -10,6 +12,10 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        span {
+            color: white;
+        }
 
         input {
             padding: 10px;

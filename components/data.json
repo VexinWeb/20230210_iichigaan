@@ -14,8 +14,8 @@
     "img2": "https://picsum.photos/300/800",
     "title": "Product 2",
     "isNew": true,
-    "oldPrice": 19,
-    "price": 12
+    "oldPrice": 37,
+    "price": 24
   },
   {
     "id": 3,
@@ -23,17 +23,17 @@
     "img2": "https://picsum.photos/800/900",
     "title": "Product 3",
     "isNew": true,
-    "oldPrice": 19,
-    "price": 12
+    "oldPrice": 56,
+    "price": 16
   },
   {
     "id": 4,
-    "img": "https://picsum.photos/350/1000",
+    "img": "https://picsum.photos/350/700",
     "img2": "https://picsum.photos/900/1100",
     "title": "Product 4",
     "isNew": true,
-    "oldPrice": 19,
-    "price": 12
+    "oldPrice": 10,
+    "price": 2
   },
   {
     "id": 5,
@@ -41,8 +41,8 @@
     "img2": "https://picsum.photos/850/950",
     "title": "Product 5",
     "isNew": true,
-    "oldPrice": 19,
-    "price": 12
+    "oldPrice": 120,
+    "price": 25
   },
   {
     "id": 6,
@@ -50,8 +50,8 @@
     "img2": "https://picsum.photos/950/1100",
     "title": "Product 6",
     "isNew": true,
-    "oldPrice": 19,
-    "price": 12
+    "oldPrice": 18,
+    "price": 11
   },
   {
     "id": 7,
@@ -59,7 +59,7 @@
     "img2": "https://picsum.photos/950/1100",
     "title": "Product 7",
     "isNew": true,
-    "oldPrice": 19,
-    "price": 12
+    "oldPrice": 84,
+    "price": 56
   }
 ]

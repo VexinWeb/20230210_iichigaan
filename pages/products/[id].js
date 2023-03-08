@@ -1,25 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import Meta from "../../components/Meta";
 import productsStyle from "../../styles/Products.module.scss";
 import styles from "../../styles/Layout.module.scss";
 import data from "../../components/data.json";
 import Image from "next/image";
 import List from "../../components/List";
-// import { useParams } from "react-router-dom";
-import { useSearchParams } from "next/navigation";
 import { useRouter } from "next/router";
 
 const Products = () => {
-  // const param = useSearchParams();
-  // console.log(param);
+  // Routes, identifying url's id (slug)
   const router = useRouter();
-  const productsId = router.query.id;
-  console.log("productsId: ", productsId); // à revoir, pourquoi "undefined" ?
+  const catId = router.query.id;
+  console.log("productsId: ", catId);
+
+  // Filters
+  const [maxPrice, setMaxPrice] = useState(1000);
+  const [sort, setSort] = useState(null);
 
   return (
     <main className={styles.main}>
       <Meta title="Products" />
       <div className={productsStyle.products}>
+        {/* Left */}
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
             <h2>Sous catégories de produits</h2>
@@ -41,15 +43,28 @@ const Products = () => {
           <div className={productsStyle.filterItem}>
             <h2>Trier par</h2>
             <div className={productsStyle.inputItem}>
-              <input type="radio" id="asc" value="asc" name="price" />
+              <input
+                type="radio"
+                id="asc"
+                value="asc"
+                name="price"
+                onChange={(e) => setSort("asc")}
+              />
               <label htmlFor="asc">Prix croissant</label>
             </div>
             <div className={productsStyle.inputItem}>
-              <input type="radio" id="desc" value="desc" name="price" />
+              <input
+                type="radio"
+                id="desc"
+                value="desc"
+                name="price"
+                onChange={(e) => setSort("desc")}
+              />
               <label htmlFor="desc">Prix décroissant</label>
             </div>
           </div>
         </div>
+        {/* Right */}
         <div className={productsStyle.right}>
           <Image
             className={productsStyle.categoriesImage}
@@ -59,7 +74,7 @@ const Products = () => {
             width={500}
             height={1000}
           />
-          <List />
+          <List catId={catId} maxPrice={maxPrice} sort={sort} />
         </div>
       </div>
     </main>

@@ -1,0 +1,18 @@
+[
+    {
+      "id": 1,
+      "img": "https://picsum.photos/1000/1000",
+      "title": "Product 1",
+      "isNew": true,
+      "oldPrice": 19,
+      "price": 12
+    },
+    {
+      "id": 2,
+      "img": "https://picsum.photos/1200/1200",
+      "title": "Product 2",
+      "isNew": true,
+      "oldPrice": 37,
+      "price": 24
+    }
+  ]
