@@ -1,7 +1,7 @@
 import React from "react";
 import featuredStyle from "../styles/Featured.module.scss";
 import Card from "./Card";
-import data from "./data.json";
+import dataFeatured from "./dataFeatured.json";
 
 const FeaturedProducts = ({ type }) => {
   return (
@@ -18,7 +18,7 @@ const FeaturedProducts = ({ type }) => {
         </p>
       </div>
       <div className={featuredStyle.bottom}>
-        {data.map((item) => (
+        {dataFeatured.map((item) => (
           <Card item={item} key={item.id} />
         ))}
       </div>

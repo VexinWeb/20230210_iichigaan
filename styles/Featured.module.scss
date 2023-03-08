@@ -1,5 +1,6 @@
 .featured {
     margin: 100px 200px;
+    // overflow-x: hidden; 
 
     .top {
         display: flex;
@@ -20,7 +21,9 @@
     }
     .bottom {
         display: flex;
-        justify-content: center;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        // justify-content: center;
         gap: 50px;
     }
 }
