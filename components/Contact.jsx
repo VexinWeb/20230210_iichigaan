@@ -13,8 +13,8 @@ const Contact = () => {
           <button>Envoyer</button>
         </div>
         <div className={contactStyle.icons}>
-          <FacebookIcon />
-          <InstagramIcon />
+          <FacebookIcon style={{ fill: "white" }} />
+          <InstagramIcon style={{ fill: "white" }} />
         </div>
       </div>
     </div>
