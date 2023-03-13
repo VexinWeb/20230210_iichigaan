@@ -37,13 +37,14 @@
 
         .icon {
             display: flex;
-            color: white; 
-            width: 100px;
-            height: 100px;
-            border: 1px solid white; 
+            background-color: white;
+            opacity: 0.7;
+            width: 80px;
+            height: 80px;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            // border: 1px solid white; 
         }
     }
 

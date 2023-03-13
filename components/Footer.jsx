@@ -8,12 +8,12 @@ const Footer = () => {
       <div className={footerStyle.top}>
         <div className={footerStyle.item}>
           <h1>Categories</h1>
-          <span>Vêtements</span>
-          <span>Accessoires</span>
-          <span>Nouveautés</span>
+          <span>Clothes</span>
+          <span>Accessories</span>
+          <span>New products</span>
         </div>
         <div className={footerStyle.item}>
-          <h1>Liens</h1>
+          <h1>Links</h1>
           <span>FAQ</span>
           <span>Pages</span>
         </div>
