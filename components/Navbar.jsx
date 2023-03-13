@@ -32,13 +32,13 @@ const Navbar = () => {
             <KeyboardArrowDownIcon />
           </div>
           <div className={navbarStyle.item}>
-            <Link href="/products/a">Vêtements</Link>
+            <Link href="/products/a">Clothes</Link>
           </div>
           <div className={navbarStyle.item}>
-            <Link href="/products/b">Accessoires</Link>
+            <Link href="/products/b">Accessories</Link>
           </div>
           <div className={navbarStyle.item}>
-            <Link href="/products/c">Nouveautés</Link>
+            <Link href="/products/c">New products</Link>
           </div>
         </div>
         <div className={navbarStyle.center}>
@@ -46,10 +46,10 @@ const Navbar = () => {
         </div>
         <div className={navbarStyle.right}>
           <div className={navbarStyle.item}>
-            <Link href="/">Accueil</Link>
+            <Link href="/">Homepage</Link>
           </div>
           <div className={navbarStyle.item}>
-            <Link href="/">A propos</Link>
+            <Link href="/">About</Link>
           </div>
           <div className={navbarStyle.item}>
             <Link href="/">Contact</Link>

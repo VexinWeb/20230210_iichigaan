@@ -2,17 +2,15 @@ import React from "react";
 import cardStyle from "../styles/Card.module.scss";
 import Link from "next/link";
 import Image from "next/image";
-// import { getImage } from "next/image";
-// import { getImage } from "next/image/server";
 
 const Card = ({ item }) => {
   return (
     <Link className={cardStyle.link} href={`/product/${item.id}`}>
       <div className={cardStyle.card}>
         <div className={cardStyle.image}>
-          {item.isNew && <span>Nouveau produit</span>}
+          {item?.attributes.isNew && <span>Nouveau produit</span>}
           <Image
-            src={item.img}
+            src={item.attributes?.img?.data?.attributes?.url}
             alt="main image"
             style={{ objectFit: "cover" }}
             width={500}
@@ -20,7 +18,7 @@ const Card = ({ item }) => {
             className={cardStyle.mainImg}
           />
           <Image
-            src={item.img2}
+            src={item.attributes?.img2?.data?.attributes?.url}
             alt="main image"
             style={{ objectFit: "cover" }}
             width={500}
@@ -28,10 +26,10 @@ const Card = ({ item }) => {
             className={cardStyle.secondImg}
           />
         </div>
-        <h2>{item.title}</h2>
+        <h2>{item?.attributes.title}</h2>
         <div className={cardStyle.prices}>
-          <h3>${item.oldPrice}</h3>
-          <h3>${item.price}</h3>
+          {/* <h3>${item?.attributes.oldPrice || ""}</h3> */}
+          <h3>${item?.attributes.price}</h3>
         </div>
       </div>
     </Link>

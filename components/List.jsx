@@ -6,9 +6,9 @@ import Card from "./Card";
 const List = () => {
   return (
     <div className={listStyle.list}>
-      {data?.map((item) => (
+      {/* {data?.map((item) => (
         <Card item={item} key={item.id} />
-      ))}
+      ))} */}
     </div>
   );
 };

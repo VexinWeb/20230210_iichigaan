@@ -47,10 +47,10 @@ const Slider = () => {
       </div>
       <div className={sliderStyle.icons}>
         <div className={sliderStyle.icon} onClick={prevSlide}>
-          <WestIcon />
+          <WestIcon style={{ fill: "black" }} />
         </div>
         <div className={sliderStyle.icon} onClick={nextSlide}>
-          <EastIcon />
+          <EastIcon style={{ fill: "black" }} />
         </div>
       </div>
     </div>

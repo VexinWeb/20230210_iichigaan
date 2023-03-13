@@ -1,11 +1,17 @@
 import React from "react";
-import featuredStyle from "../styles/Featured.module.scss";
 import Card from "./Card";
-import dataFeatured from "./dataFeatured.json";
+import featuredStyle from "../styles/Featured.module.scss";
+import useFetch from "../hooks/useFetch";
+import Loader from "./Loader";
 
 const FeaturedProducts = ({ type }) => {
+  const { data, loading, error } = useFetch(
+    `/products?populate=*&[filters][type][$eq]=${type}`
+  );
+  console.log(data);
   return (
     <div className={featuredStyle.featured}>
+      {/* <Loader /> */}
       <div className={featuredStyle.top}>
         <h1>{type}</h1>
         <p>
@@ -18,9 +24,13 @@ const FeaturedProducts = ({ type }) => {
         </p>
       </div>
       <div className={featuredStyle.bottom}>
-        {dataFeatured.map((item) => (
-          <Card item={item} key={item.id} />
-        ))}
+        {error ? (
+          "Error message"
+        ) : loading ? (
+          <Loader />
+        ) : (
+          data?.map((item) => <Card item={item} key={item.id} />)
+        )}
       </div>
     </div>
   );

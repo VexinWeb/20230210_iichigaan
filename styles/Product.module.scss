@@ -18,7 +18,7 @@
                 height: 150px;
                 object-fit: cover;
                 cursor: pointer;
-                margin-bottom: 10px;
+                margin-bottom: 8.5px;
             }
         }
         .mainImage {
@@ -92,10 +92,17 @@
             flex-direction: column;
             gap: 10px;
             span { 
-                
                 color: grey;
                 font-size: 14px;
                 margin-top: 30px;
+                display: flex;
+            }
+            .item {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 14px;
+                color: gray;
             }
             hr {
                 width: 200px;
