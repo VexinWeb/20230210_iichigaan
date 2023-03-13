@@ -22,8 +22,12 @@
     .bottom {
         display: flex;
         flex-wrap: wrap;
-        justify-content: space-between;
-        // justify-content: center;
+        justify-content: center;
         gap: 50px;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr;
+        // justify-items: center;
+        // justify-content: center;
+        // gap: 50px;
     }
 }

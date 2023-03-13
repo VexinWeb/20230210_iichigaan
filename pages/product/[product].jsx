@@ -7,6 +7,8 @@ import data from "../../components/dataProduct.json";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
+import PanToolIcon from "@mui/icons-material/PanTool";
+import PublicIcon from "@mui/icons-material/Public";
 
 const Product = () => {
   const [selectedImage, setSelectedImage] = useState(0);
@@ -35,6 +37,33 @@ const Product = () => {
               width={500}
               height={1000}
               onClick={(e) => setSelectedImage(1)}
+            />
+            <Image
+              className={productStyle.image}
+              src={data[2].img}
+              alt="product image 3"
+              style={{ objectFit: "cover" }}
+              width={500}
+              height={1000}
+              onClick={(e) => setSelectedImage(2)}
+            />
+            <Image
+              className={productStyle.image}
+              src={data[3].img}
+              alt="product image 4"
+              style={{ objectFit: "cover" }}
+              width={500}
+              height={1000}
+              onClick={(e) => setSelectedImage(3)}
+            />
+            <Image
+              className={productStyle.image}
+              src={data[4].img}
+              alt="product image 5"
+              style={{ objectFit: "cover" }}
+              width={500}
+              height={1000}
+              onClick={(e) => setSelectedImage(4)}
             />
           </div>
           <div className={productStyle.mainImage}>
@@ -70,28 +99,34 @@ const Product = () => {
           </div>
           <button className={productStyle.addToCart}>
             <AddShoppingCartIcon style={{ fill: "white" }} />
-            Ajouter au panier
+            Add to cart
           </button>
           <div className={productStyle.links}>
             <div className={productStyle.item}>
-              <FavoriteBorderIcon style={{ fill: "#2879fe" }} /> Ajouter aux
-              favoris
+              <FavoriteBorderIcon style={{ fill: "#2879fe" }} /> Add to
+              favorites
             </div>
             <div className={productStyle.item}>
-              <BalanceIcon style={{ fill: "#2879fe" }} /> Ajouter et comparer
+              <BalanceIcon style={{ fill: "#2879fe" }} /> Add and compare
             </div>
           </div>
           <div className={productStyle.info}>
-            <span>Type de produit : T-shirt</span>
+            <span>Type of product : T-shirt</span>
             <span>Tag : t-shirt, women, top</span>
+            <span className={productStyle.item}>
+              <PanToolIcon style={{ fill: "black" }} />
+              Handmade
+            </span>
+            <span className={productStyle.item}>
+              <PublicIcon style={{ fill: "black" }} />
+              Materials: leather from Niger, animal leather
+            </span>
           </div>
           <hr />
           <div className={productStyle.info}>
             <span>Description</span>
             <hr />
-            <span>Informations supplémentaires</span>
-            <hr />
-            <span>Avis</span>
+            <span>More informations</span>
           </div>
         </div>
       </div>

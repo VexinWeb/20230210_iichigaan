@@ -12,18 +12,15 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-
         span {
             color: white;
         }
-
         input {
             padding: 10px;
             border: none;
             border-radius: 5px 0 0 5px;
             outline: none;
         }
-
         button {
             padding: 10px;
             border: none;
@@ -32,7 +29,6 @@
             color: white;
             cursor: pointer;
         }
-
         .icons {
             display: flex;
             gap: 10px;
