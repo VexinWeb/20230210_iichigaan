@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import Meta from "../../components/Meta";
 import productsStyle from "../../styles/Products.module.scss";
 import styles from "../../styles/Layout.module.scss";
-import data from "../../components/data.json";
+// import data from "../../components/data.json";
 import Image from "next/image";
 import List from "../../components/List";
 import { useRouter } from "next/router";
+import useFetch from "../../hooks/useFetch";
 
 const Products = () => {
   // Routes, identifying url's id (slug)
@@ -15,7 +16,29 @@ const Products = () => {
 
   // Filters
   const [maxPrice, setMaxPrice] = useState(1000);
-  const [sort, setSort] = useState(null);
+  const [sort, setSort] = useState("desc");
+  const [selectedSubCats, setSelectedSubCats] = useState([]);
+
+  // Fetching sub-categories from Strapi
+  const { data, loading, error } = useFetch(
+    // `/sub-categories?[filters][categories][id][$eq]=${catId}`
+    // `/product_types?[filters][categories][id][$eq]=${catId}`
+    `/product_types?filters[categories][id][$eq]=${catId}`
+  );
+  console.log(data);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectedSubCats(
+      isChecked
+        ? [...selectedSubCats, value]
+        : selectedSubCats.filter((item) => item !== value)
+    );
+  };
+
+  console.log("subCats: ", selectedSubCats);
 
   return (
     <main className={styles.main}>
@@ -25,21 +48,31 @@ const Products = () => {
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
             <h2>Sous catégories de produits</h2>
-            <div className={productsStyle.inputItem}>
-              <input type="checkbox" id="1" value="1" />
-              <label htmlFor="1">Pagne</label>
-            </div>
-            <div className={productsStyle.inputItem}>
-              <input type="checkbox" id="2" value="1" />
-              <label htmlFor="2">Chemise</label>
-            </div>
+            {data?.map((item) => (
+              <div className={productsStyle.inputItem} key={item.id}>
+                <input
+                  type="checkbox"
+                  id={item.id}
+                  value={item.id}
+                  onChange={handleChange}
+                />
+                <label htmlFor={item.id}>{item.attributes.title}</label>
+              </div>
+            ))}
           </div>
-          <div className={productsStyle.filterItem}>
+          {/* Filtre par prix : */}
+          {/* <div className={productsStyle.filterItem}>
             <h2>Filtrer par prix</h2>
             <span>0</span>
-            <input type="range" min={0} max={1000} />
-            <span>1000</span>
-          </div>
+            <input
+              type="range"
+              min={0}
+              max={1000}
+              onChange={(e) => setMaxPrice(e.target.value)}
+            />
+            <span>{maxPrice}</span>
+          </div> */}
+          {/* Sort by: */}
           <div className={productsStyle.filterItem}>
             <h2>Trier par</h2>
             <div className={productsStyle.inputItem}>
@@ -66,15 +99,20 @@ const Products = () => {
         </div>
         {/* Right */}
         <div className={productsStyle.right}>
-          <Image
+          {/* <Image
             className={productsStyle.categoriesImage}
             src={data[6].img}
             alt="categories image"
             style={{ objectFit: "cover" }}
             width={500}
             height={1000}
+          /> */}
+          <List
+            catId={catId}
+            maxPrice={maxPrice}
+            sort={sort}
+            subCats={selectedSubCats}
           />
-          <List catId={catId} maxPrice={maxPrice} sort={sort} />
         </div>
       </div>
     </main>

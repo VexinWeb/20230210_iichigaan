@@ -5,12 +5,13 @@ import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 
 const FeaturedProducts = ({ type }) => {
+  // Fetching products and images from <Strapi></Strapi>
   const { data, loading, error } = useFetch(
-    `/products?populate=*&[filters][type][$eq]=${type}}`
+    `/products?populate=*&[filters][type][$eq]=${type}`
   );
   console.log(data);
   return (
-    <div className={featuredStyle.featured}>
+    <div className={featuredStyle.featured} id={type}>
       {/* <Loader /> */}
       <div className={featuredStyle.top}>
         <h1>{type}</h1>
@@ -25,7 +26,7 @@ const FeaturedProducts = ({ type }) => {
       </div>
       <div className={featuredStyle.bottom}>
         {error ? (
-          "Error message"
+          "Something went wrong !"
         ) : loading ? (
           <Loader />
         ) : (
