@@ -9,12 +9,15 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import Cart from "./Cart";
+import { useSelector } from "react-redux";
 
 const RedSearchIcon = styled(SearchIcon)({
   color: "red",
 });
 
 const Navbar = () => {
+  const products = useSelector((state) => state.cart.products);
+
   const [open, setOpen] = useState(false);
 
   return (
@@ -32,14 +35,14 @@ const Navbar = () => {
             <KeyboardArrowDownIcon />
           </div>
           <div className={navbarStyle.item}>
-            <Link href="/products/a">Clothes</Link>
+            <Link href="/products/1">Clothes</Link>
           </div>
           <div className={navbarStyle.item}>
-            <Link href="/products/b">Accessories</Link>
+            <Link href="/products/2">Accessories</Link>
           </div>
-          <div className={navbarStyle.item}>
+          {/* <div className={navbarStyle.item}>
             <Link href="/products/c">New products</Link>
-          </div>
+          </div> */}
         </div>
         <div className={navbarStyle.center}>
           <Link href="/">iichigaan</Link>
@@ -66,7 +69,7 @@ const Navbar = () => {
               onClick={() => setOpen(!open)}
             >
               <ShoppingCartIcon style={{ fill: "gray" }} />
-              <span>0</span>
+              <span>{products.length}</span>
             </div>
           </div>
         </div>
