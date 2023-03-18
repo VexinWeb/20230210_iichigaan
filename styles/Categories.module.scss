@@ -33,7 +33,8 @@
             margin: auto;
             cursor: pointer;
             border: none;
-            background-color: white;
+            // background-color: white;
+            background-color: transparent;
             text-transform: uppercase;
             font-weight: 500;
         }
@@ -43,5 +44,34 @@
             height: 100%;
             object-fit: cover;
         }
+    }
+}
+
+.featured {
+    width: 100%;
+    background-color: #8ACDEA;
+    button {
+        font-size: 2rem;
+    }
+}
+.trending {
+    width: 100%;
+    background-color: #857E61;
+    button {
+        font-size: 2rem;
+    }
+}
+.clothes {
+    width: 100%;
+    background-color: #FF6542;
+    button {
+        font-size: 2rem;
+    }
+}
+.accessories {
+    width: 100%;
+    background-color: #EDD83D;
+    button {
+        font-size: 2rem;
     }
 }
