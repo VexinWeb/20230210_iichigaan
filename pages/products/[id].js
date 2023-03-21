@@ -3,7 +3,6 @@ import Meta from "../../components/Meta";
 import productsStyle from "../../styles/Products.module.scss";
 import styles from "../../styles/Layout.module.scss";
 // import data from "../../components/data.json";
-import Image from "next/image";
 import List from "../../components/List";
 import { useRouter } from "next/router";
 import useFetch from "../../hooks/useFetch";
