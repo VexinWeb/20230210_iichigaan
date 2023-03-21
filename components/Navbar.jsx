@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import navbarStyle from "../styles/Navbar.module.scss";
-import Image from "next/Image";
+import Image from "next/image";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";

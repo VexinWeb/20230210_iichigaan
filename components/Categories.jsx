@@ -1,6 +1,5 @@
 import React from "react";
 import categoriesStyle from "../styles/Categories.module.scss";
-import Image from "next/Image";
 // import data from "./data.json";
 import Link from "next/link";
 import { border } from "@mui/system";
