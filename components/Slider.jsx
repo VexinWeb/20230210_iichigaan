@@ -1,6 +1,6 @@
 import React from "react";
 import sliderStyle from "../styles/Slider.module.scss";
-import Image from "next/Image";
+import Image from "next/image";
 import EastIcon from "@mui/icons-material/East";
 import WestIcon from "@mui/icons-material/West";
 import { useState } from "react";
