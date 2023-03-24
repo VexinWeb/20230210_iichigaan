@@ -11,6 +11,9 @@
         align-items: center;
         justify-content: space-between;
         padding: 10px 30px;
+        @media screen and (max-width: 600px) {
+            padding: 10px 20px;
+        }
         @media screen and (max-width: 500px) {
             padding: 10px 15px;
         }
@@ -34,6 +37,10 @@
                     @media screen and (max-width: 500px) {
                         width: 20px;
                         height: 15px;
+                    }
+                    @media screen and (max-width: 400px) {
+                        width: 16px;
+                        height: 12px;
                     }
                 }
                 img:hover {
@@ -75,6 +82,7 @@
             align-items: center;
             justify-content: space-around;
             gap: 25px;
+            
             @media screen and (max-width: 1000px) {
              gap: 0;
             }
@@ -89,6 +97,9 @@
             letter-spacing: 2px;
             gap: 15px;
             width: 80px;
+            @media screen and (max-width: 700px) {
+                flex: 2;
+               }
             a {
                 align-items: center;
                 // padding: 0px 15px;
@@ -115,7 +126,11 @@
             display: flex;
             justify-content: space-around;
             align-items: center;
-            gap: 25px;
+            gap: 20px;
+            @media screen and (max-width: 700px) {
+                flex: 3;
+                gap: 15px;
+               }
             @media screen and (max-width: 500px) {
                 gap: 10px;
             }
@@ -126,9 +141,9 @@
             .rightMenu {
                 display: flex;
                 flex-direction: row;
-                @media screen and (max-width: 700px) {
-                    flex-direction: column;
-                    }    
+                // @media screen and (max-width: 700px) {
+                //     flex-direction: column;
+                //     }    
                 }
             }
             .icons {
