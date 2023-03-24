@@ -27,30 +27,30 @@ const Slider = () => {
           src={data[0]}
           alt="slide0"
           style={{ objectFit: "contain" }}
-          width={4000}
-          height={3000}
+          width={1500}
+          height={1200}
         />
         <Image
           src={data[1]}
           alt="slide1"
           style={{ objectFit: "cover" }}
-          width={4000}
-          height={3000}
+          width={1500}
+          height={1200}
         />
         <Image
           src={data[2]}
           alt="slide2"
           style={{ objectFit: "cover" }}
-          width={4000}
-          height={3000}
+          width={1500}
+          height={1200}
         />
       </div>
       <div className={sliderStyle.icons}>
         <div className={sliderStyle.icon} onClick={prevSlide}>
-          <WestIcon style={{ fill: "black" }} />
+          <WestIcon style={{ fill: "white", fontSize: "35px" }} />
         </div>
         <div className={sliderStyle.icon} onClick={nextSlide}>
-          <EastIcon style={{ fill: "black" }} />
+          <EastIcon style={{ fill: "white", fontSize: "35px" }} />
         </div>
       </div>
     </div>

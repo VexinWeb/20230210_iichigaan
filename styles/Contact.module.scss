@@ -2,37 +2,118 @@
 
 .contact {
     background-color: $color-perso;
-    color: white;
+    opacity: .9;
     padding: 15px;
     display: flex;
     justify-content: center;
+    height: 100px;
+    @media screen and (max-width: 600px) {
+        height: 120px;
+    }
 
     .wrapper {
-        width: 50%;
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
-        span {
-            color: white;
+        font-size: 18px;
+        margin: 0px 200px;
+        @media screen and (max-width: 1400px) {
+            margin: 0px 120px;
+        }
+        @media screen and (max-width: 1200px) {
+            margin: 0px 20px;
+        }
+        @media screen and (max-width: 1000px) {
+            margin: 0 10px;
+        }
+        @media screen and (max-width: 800px) {
+            font-size: 14px;
+        }
+        @media screen and (max-width: 600px) {
+            // flex-direction: column;
+            // padding: 0;
+            margin: 0;
+            font-size: 13px;
+            justify-content: space-around;
         }
         input {
-            padding: 10px;
+            width: 400px;
+            padding: 15px;
             border: none;
-            border-radius: 5px 0 0 5px;
             outline: none;
+            @media screen and (max-width: 1000px) {
+                width: 250px;
+            }
+            @media screen and (max-width: 800px) {
+                font-size: 14px;
+                width: 200px;
+            }
+            @media screen and (max-width: 600px) {
+                font-size: 13px;
+                padding: 10px 15px;
+                width: 150px;
+            }
         }
         button {
-            padding: 10px;
+            width: 100px;
+            padding: 15px;
             border: none;
-            border-radius: 0 5px 5px 0;
-            background-color: black;
+            background-color: $color-background;
             color: white;
             cursor: pointer;
+            @media screen and (max-width: 1000px) {
+                font-size: 14px;
+            }
+            @media screen and (max-width: 800px) {
+                font-size: 14px;
+            }
+            @media screen and (max-width: 600px) {
+                font-size: 13px;
+                padding: 10px 15px;
+                width: 80px;
+            }
         }
-        .icons {
+        .iichigaan {
             display: flex;
-            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            cursor: pointer;
+            color: white;
+            width: 200px;
+            @media screen and (max-width: 800px) {
+                width: 100px;
+            }
+            @media screen and (max-width: 600px) {
+                display: none;
+            }
+        }
+        .social {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            cursor: pointer;
+            color: white;
+            width: 200px;
+            @media screen and (max-width: 800px) {
+                gap: 10px;
+                width: 100px;
+            }
+            @media screen and (max-width: 600px) {
+                gap: 5px;
+                width: 50px;
+            }
+            a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            svg {
+                width: 35px;
+                height: 35px;
+            }
         }
     }
-
 }

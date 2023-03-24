@@ -1,0 +1,86 @@
+@import 'colors';
+
+.collapse {
+    width: 500px;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 1000px) {
+        width: 350px;
+    }
+    @media screen and (max-width: 800px) {
+        margin-bottom: 10px;
+        width: 300px;
+    }
+    @media screen and (max-width: 600px) {
+        margin-bottom: 5px;
+    }
+    .collapseHeader {
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 47px;
+        border-style: solid;
+        color: white; 
+        width: 500px;
+        cursor: pointer;
+        @media screen and (max-width: 1000px) {
+            width: 350px;
+        }
+        @media screen and (max-width: 800px) {
+            width: 300px;
+        }
+        @media screen and (max-width: 600px) {
+            width: 300px;
+        }
+        @media screen and (max-width: 400px) {
+            height: 30px;
+        }
+
+        h3 {
+            color: white;
+            font-size: 16px;
+            margin-left: 18px;
+            font-weight: 500;
+            @media screen and (max-width: 800px) {
+                // font-weight: normal;
+                font-size: 15px;
+            }
+            @media screen and (max-width: 400px) {
+                font-size: 13px;
+            }
+        }
+        .collapseButtonArrow {
+            margin-right: 17px;
+            font-size: 2.5rem;
+            font-weight: 200;
+            padding-bottom: 6px;
+            @media screen and (max-width: 800px) {
+                
+            }
+            @media screen and (max-width: 600px) {
+                
+            }
+            @media screen and (max-width: 400px) {
+                font-size: 1.4rem;
+            }
+            div {
+                color: white;
+            }
+        }
+    }
+    .collapseTextIsOpened {
+        color: white;
+        padding: 15px;
+        margin-top: -1px;
+        border-style: solid;
+        line-height: 1.5;
+        font-size: 15px;
+        @media screen and (max-width: 1000px) {
+            font-size: 14px;
+        }
+        @media screen and (max-width: 800px) {
+            font-size: 13px;
+        }
+    }
+}

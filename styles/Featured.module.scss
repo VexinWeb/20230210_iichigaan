@@ -1,7 +1,14 @@
 .featured {
     margin: 100px 200px;
-    // overflow-x: hidden; 
-
+    @media screen and (max-width: 1200px) {
+        margin: 50px 40px;
+    }
+    @media screen and (max-width: 1000px) {
+        margin: 40px 30px;
+    }
+    @media screen and (max-width: 800px) {
+        margin: 30px 20px;
+    }
     .top {
         display: flex;
         justify-content: space-between;
@@ -12,18 +19,24 @@
         }
         h1 {
             flex: 2;
+            @media screen and (max-width: 1000px) {
+                font-size: 1rem;
+            }
         }
-
         p {
             flex: 2; 
+            @media screen and (max-width: 1000px) {
+                font-size: .8rem;
+            }
         }
     }
     .bottom {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 50px;
-        // display: flex;
-        // flex-wrap: wrap;
-        // justify-content: center;
+        a {
+            align-self: center;
+            justify-self: center;
+        }
     }
 }

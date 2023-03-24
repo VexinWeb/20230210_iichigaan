@@ -1,60 +1,161 @@
+@import "colors";
+
 .footer {
-    margin: 100px 200px 20px 200px; 
-
-    .top {
-        display: flex;
-        gap: 50px;
-
-        .item {
-            flex: 1;
+    background-color: $color-background;
+    .wrapper {
+        margin: 0px 200px; 
+        padding: 20px 0;
+        @media screen and (max-width: 1000px) {
+            margin: 0px 50px;
+            padding: 20px 0;
+        }
+        @media screen and (max-width: 800px) {
+            margin: 0px 20px 0px 20px;
+            padding: 10px 0;
+        }
+        .top {
             display: flex;
             flex-direction: column;
-            gap: 10px;
-            text-align: justify; 
-            font-size: 14px;
-
-            h1{
-                font-size: 18px;
-                font-weight: 500;
-                color: #555;
+            align-items: center;
+            margin: 10px 0;
+            @media screen and (max-width: 1000px) {
+                // gap: 30px;
             }
-            span {
-                color: grey; 
+            @media screen and (max-width: 800px) {
+                // gap: 20px;
+            }
+            @media screen and (max-width: 600px) {
+                gap: 10px;
+            }
+            .item {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                text-align: justify; 
+                font-size: 14px;
+                @media screen and (max-width: 800px) {
+                    gap: 10px;
+                }  
+                @media screen and (max-width: 600px) {
+                    gap: 5px;
+                }  
+                h1{
+                    font-size: 18px;
+                    font-weight: 500;
+                    color: white;
+                    @media screen and (max-width: 600px) {
+                        font-size: 14px;
+                    }
+                }
+                span {
+                    color: white;
+                    @media screen and (max-width: 600px) {
+                        font-size: 12px;
+                    }
+                }
+                
             }
         }
-
-    }
-    .bottom {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-top: 50px;
-
-        .left {
+        .bottom {
             display: flex;
             align-items: center;
-
-            .logo {
+            justify-content: space-between;
+            margin-top: 10px;
+            // @media screen and (max-width: 700px) {
+                
+            // }
+            @media screen and (max-width: 600px) {
+                // flex-direction: column;
+            }
+            .left {
                 display: flex;
                 align-items: center;
+                justify-content: center;
+                width: 200px;
+                @media screen and (max-width: 450px) {
+                    width: 150px;
+                }
+                .logo {
+                    display: flex;
+                    align-items: center;
+                    img {
+                        @media screen and (max-width: 500px) {
+                            width: 30px;
+                            height: 30px;
+                        }
+                    }
+                    // @media screen and (max-width: 500px) {
+                    //     width: 30px;
+                    //     height: 30px;
+                    // }
+                }
+                .copyright {
+                    margin-left: 20px;
+                    font-size: 12px;
+                    color: white;
+                    @media screen and (max-width: 700px) {
+                        font-size: 10px;
+                    }
+                    @media screen and (max-width: 600px) {
+                        font-size: 9px;
+                    }
+                    @media screen and (max-width: 450px) {
+                        font-size: 7px;
+                        margin-left: 5px;
+                    }
+                }
             }
-
-            .copyright {
-                margin-left: 20px;
-                font-size: 12px;
-                color: grey;
-            }
-        }
-        .right{
-            height: 50px;
-            display: flex;
-            align-items: center;
-
-            .payment {
+            .center {
                 display: flex;
-                align-items: center; 
+                align-items: center;
+                img {
+                    width: 180px;
+                    @media screen and (max-width: 700px) {
+                        width: 150px;
+                    }
+                    @media screen and (max-width: 600px) {
+                        width: 120px;
+                    }
+                    @media screen and (max-width: 450px) {
+                        width: 80px;
+                    }
+                }
+            }
+            .right{
+                color: white;
+                height: 50px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 200px;
+                @media screen and (max-width: 450px) {
+                    width: 150px;
+                }
+                a {
+                    font-size: 12px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    @media screen and (max-width: 700px) {
+                        font-size: 10px;
+                    }
+                    @media screen and (max-width: 600px) {
+                        font-size: 9px;
+                    }
+                    @media screen and (max-width: 450px) {
+                        font-size: 7px;
+                    }
+                }
+                img {
+                    @media screen and (max-width: 700px) {
+                        width: 40px;
+                    }
+                    @media screen and (max-width: 600px) {
+                        width: 30px;
+                    }
+                }
             }
         }
     }
-
 }
