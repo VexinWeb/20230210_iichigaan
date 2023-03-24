@@ -1,74 +1,101 @@
 import React, { useState } from "react";
 import navbarStyle from "../styles/Navbar.module.scss";
 import Image from "next/image";
-import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import { styled } from "@mui/material/styles";
+// import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
-const RedSearchIcon = styled(SearchIcon)({
-  color: "red",
-});
+// const RedSearchIcon = styled(SearchIcon)({
+//   color: "red",
+// });
 
 const Navbar = () => {
   const products = useSelector((state) => state.cart.products);
-
   const [open, setOpen] = useState(false);
+
+  const router = useRouter();
+  console.log(router);
 
   return (
     <div className={navbarStyle.navbar}>
       <div className={navbarStyle.wrapper}>
         <div className={navbarStyle.left}>
           <div className={navbarStyle.item}>
-            <Image
-              src="/french.png"
-              alt="French flag"
-              style={{ objectFit: "cover" }}
-              width={20}
-              height={15}
-            />
-            <KeyboardArrowDownIcon />
+            <div className={navbarStyle.language}>
+              <Image
+                src="/english.png"
+                alt="French flag"
+                style={{
+                  objectFit: "cover",
+                }}
+                width={25}
+                height={18}
+              />
+            </div>
+            <div className={navbarStyle.language}>
+              <Image
+                src="/french.png"
+                alt="French flag"
+                style={{
+                  objectFit: "cover",
+                }}
+                width={25}
+                height={18}
+              />
+            </div>
           </div>
-          <div className={navbarStyle.item}>
-            <Link href="/products/1">Clothes</Link>
-          </div>
-          <div className={navbarStyle.item}>
-            <Link href="/products/2">Accessories</Link>
-          </div>
-          {/* <div className={navbarStyle.item}>
-            <Link href="/products/c">New products</Link>
-          </div> */}
         </div>
         <div className={navbarStyle.center}>
-          <Link href="/">iichigaan</Link>
+          <Link href="/" className={router.asPath == "/" ? "active" : ""}>
+            <Image
+              src="/logo.png"
+              alt="logo"
+              style={{ objectFit: "cover", borderRadius: "50%" }}
+              width={50}
+              height={50}
+            />
+            <div className={navbarStyle.centerText}>iichigaan</div>
+          </Link>
         </div>
         <div className={navbarStyle.right}>
-          <div className={navbarStyle.item}>
-            <Link href="/">Homepage</Link>
-          </div>
-          <div className={navbarStyle.item}>
-            <Link href="/">About</Link>
-          </div>
-          <div className={navbarStyle.item}>
-            <Link href="/">Contact</Link>
+          <div className={navbarStyle.rightMenu}>
+            <div className={navbarStyle.item}>
+              <Link
+                href="/products/1"
+                className={router.asPath == "/products/1" ? "active" : ""}
+              >
+                Clothes
+              </Link>
+            </div>
+            <div className={navbarStyle.item}>
+              <Link
+                href="/products/2"
+                className={router.asPath == "/products/2" ? "active" : ""}
+              >
+                Accessories
+              </Link>
+            </div>
           </div>
           <div className={navbarStyle.icons}>
-            <SearchIcon
-              className={navbarStyle.rightIcon}
-              style={{ fill: "gray" }}
-            />
-            <PersonOutlineIcon style={{ fill: "gray" }} />
-            <FavoriteBorderOutlinedIcon style={{ fill: "gray" }} />
             <div
               className={navbarStyle.cartIcon}
               onClick={() => setOpen(!open)}
             >
-              <ShoppingCartIcon style={{ fill: "gray" }} />
+              <ShoppingCartIcon
+                style={{
+                  fill: "white",
+                  // fontSize: "25px",
+                  // width: "25px",
+                  // height: "25px",
+                }}
+              />
               <span>{products.length}</span>
             </div>
           </div>

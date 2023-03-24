@@ -13,22 +13,21 @@ const Card = ({ item }) => {
             src={item.attributes?.img?.data?.attributes?.url}
             alt="main image"
             style={{ objectFit: "cover" }}
-            width={500}
-            height={1000}
+            width={300}
+            height={400}
             className={cardStyle.mainImg}
           />
           <Image
             src={item.attributes?.img2?.data?.attributes?.url}
-            alt="main image"
+            alt="second image"
             style={{ objectFit: "cover" }}
-            width={500}
-            height={1000}
+            width={300}
+            height={400}
             className={cardStyle.secondImg}
           />
         </div>
         <h2>{item?.attributes.title}</h2>
         <div className={cardStyle.prices}>
-          {/* <h3>${item?.attributes.oldPrice || ""}</h3> */}
           <h3>${item?.attributes.price}</h3>
         </div>
       </div>

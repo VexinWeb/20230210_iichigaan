@@ -16,7 +16,7 @@ export default function Home() {
       <FeaturedProducts type="featured" />
       <Categories />
       <FeaturedProducts type="trending" />
-      <Contact />
+      {/* <Contact /> */}
     </div>
   );
 }

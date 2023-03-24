@@ -1,28 +1,34 @@
 .card {
-    width: 280px;
+    max-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 50px;
-
+    @media screen and (max-width: 600px) {
+        margin-bottom: 0px;
+        gap: 5px;
+    }
+    
     .image {
-        width: 100%;
+        width: 300px;
         height: 400px;
         overflow: hidden;
         position: relative;
+        @media screen and (max-width: 600px) {
+            height: 300px;
+        }
+       
         &:hover {
             .secondImg {
                 z-index: 2;
             }
         }
-
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             position: absolute;
         }
-
         .mainImg {
             z-index: 1;
         }
@@ -43,19 +49,23 @@
     h2 {
         font-size: 16px;
         font-weight: 400;
+        @media screen and (max-width: 600px) {
+            font-size: 16px;
+        }
     }
     .prices {
         display: flex;
         gap: 20px;
+        @media screen and (max-width: 600px) {
+            gap: 5px;       
+        }
 
         h3 {
             font-size: 18px;
             font-weight: 500;
-
-            // &:first-child {
-            //     text-decoration: line-through;
-            //     color: grey;
-            // }
+            @media screen and (max-width: 600px) {
+                font-size: 14px;   
+            }
         }
     }
 }

@@ -44,6 +44,7 @@ const Product = () => {
           <Loader />
         ) : (
           <>
+            {/* Left */}
             <div className={productStyle.left}>
               <div className={productStyle.images}>
                 {data?.attributes?.img?.data?.attributes?.url && (
@@ -53,7 +54,7 @@ const Product = () => {
                     alt={data?.attributes?.img?.data?.attributes?.name}
                     style={{ objectFit: "cover" }}
                     width={500}
-                    height={1000}
+                    height={900}
                     onClick={(e) => setSelectedImage("img")}
                     // onError={handleImageError}
                   />
@@ -65,7 +66,7 @@ const Product = () => {
                     alt={data?.attributes?.img2?.data?.attributes?.name}
                     style={{ objectFit: "cover" }}
                     width={500}
-                    height={1000}
+                    height={900}
                     onClick={(e) => setSelectedImage("img2")}
                     // onError={handleImageError}
                   />
@@ -77,7 +78,7 @@ const Product = () => {
                     alt={data?.attributes?.img3?.data?.attributes?.name}
                     style={{ objectFit: "cover" }}
                     width={500}
-                    height={1000}
+                    height={900}
                     onClick={(e) => setSelectedImage("img3")}
                     // onError={handleImageError}
                   />
@@ -89,7 +90,7 @@ const Product = () => {
                     alt={data?.attributes?.img4?.data?.attributes?.name}
                     style={{ objectFit: "cover" }}
                     width={500}
-                    height={1000}
+                    height={900}
                     onClick={(e) => setSelectedImage("img4")}
                     // onError={handleImageError}
                   />
@@ -101,8 +102,44 @@ const Product = () => {
                     alt={data?.attributes?.img5?.data?.attributes?.name}
                     style={{ objectFit: "cover" }}
                     width={500}
-                    height={1000}
+                    height={900}
                     onClick={(e) => setSelectedImage("img5")}
+                    // onError={handleImageError}
+                  />
+                )}
+                {data?.attributes?.img6?.data?.attributes?.url && (
+                  <Image
+                    className={productStyle.image}
+                    src={data?.attributes?.img6?.data?.attributes?.url}
+                    alt={data?.attributes?.img6?.data?.attributes?.name}
+                    style={{ objectFit: "cover" }}
+                    width={500}
+                    height={900}
+                    onClick={(e) => setSelectedImage("img6")}
+                    // onError={handleImageError}
+                  />
+                )}
+                {data?.attributes?.img7?.data?.attributes?.url && (
+                  <Image
+                    className={productStyle.image}
+                    src={data?.attributes?.img7?.data?.attributes?.url}
+                    alt={data?.attributes?.img7?.data?.attributes?.name}
+                    style={{ objectFit: "cover" }}
+                    width={500}
+                    height={900}
+                    onClick={(e) => setSelectedImage("img7")}
+                    // onError={handleImageError}
+                  />
+                )}
+                {data?.attributes?.img8?.data?.attributes?.url && (
+                  <Image
+                    className={productStyle.image}
+                    src={data?.attributes?.img8?.data?.attributes?.url}
+                    alt={data?.attributes?.img8?.data?.attributes?.name}
+                    style={{ objectFit: "cover" }}
+                    width={500}
+                    height={900}
+                    onClick={(e) => setSelectedImage("img8")}
                     // onError={handleImageError}
                   />
                 )}
@@ -114,10 +151,11 @@ const Product = () => {
                   alt={data?.attributes?.img?.data?.attributes?.name}
                   style={{ objectFit: "cover" }}
                   width={500}
-                  height={1000}
+                  height={900}
                 />
               </div>
             </div>
+            {/* Right */}
             <div className={productStyle.right}>
               <h1>{data?.attributes?.title}</h1>
               <span className={productStyle.price}>
@@ -152,25 +190,25 @@ const Product = () => {
                   )
                 }
               >
-                <AddShoppingCartIcon style={{ fill: "white" }} />
+                <AddShoppingCartIcon
+                  style={{ fill: "white" }}
+                  className={productStyle.icon}
+                />
                 Add to cart
               </button>
-              {/* <div className={productStyle.links}>
-                <div className={productStyle.item}>
-                  <FavoriteBorderIcon style={{ fill: "#ED79BC" }} /> Add to
-                  favorites
-                </div>
-                <div className={productStyle.item}>
-                  <BalanceIcon style={{ fill: "#ED79BC" }} /> Add and compare
-                </div>
-              </div> */}
               <div className={productStyle.info}>
                 <span className={productStyle.item}>
-                  <StraightenIcon style={{ fill: "#ED79BC" }} />
+                  <StraightenIcon
+                    style={{ fill: "#FF6542" }}
+                    className={productStyle.icon}
+                  />
                   *Longueur des manches : 46 cm *Hauteur dos : 76 cm
                 </span>
                 <span className={productStyle.item}>
-                  <CategoryIcon style={{ fill: "#ED79BC" }} />
+                  <CategoryIcon
+                    style={{ fill: "#FF6542" }}
+                    className={productStyle.icon}
+                  />
                   Type of product:{" "}
                   {/* {data?.attributes?.product_types?.data[0]?.attributes?.title} */}
                   {data?.attributes?.product_types?.data?.map((type) => (
@@ -179,27 +217,31 @@ const Product = () => {
                 </span>
                 {/* <span>Tag : t-shirt, women, top</span> */}
                 <span className={productStyle.item}>
-                  <PublicIcon style={{ fill: "#ED79BC" }} />
+                  <PublicIcon
+                    style={{ fill: "#FF6542" }}
+                    className={productStyle.icon}
+                  />
                   Material(s):{" "}
                   {data?.attributes?.materials?.map((material) => (
                     <div key={material.id}> {material.material}</div>
                   ))}
                 </span>
                 <span className={productStyle.item}>
-                  <LocalShippingIcon style={{ fill: "#ED79BC" }} />
+                  <LocalShippingIcon
+                    style={{ fill: "#FF6542" }}
+                    className={productStyle.icon}
+                  />
                   Delivery: 3-5 days
                 </span>
                 <span className={productStyle.item}>
-                  <PanToolIcon style={{ fill: "#ED79BC" }} />
+                  <PanToolIcon
+                    style={{ fill: "#FF6542" }}
+                    className={productStyle.icon}
+                  />
                   Handmade
                 </span>
               </div>
               <hr />
-              {/* <div className={productStyle.info}>
-                <span>Description</span>
-                <hr />
-                <span>More informations</span>
-              </div> */}
             </div>
           </>
         )}
