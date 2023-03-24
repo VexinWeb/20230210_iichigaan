@@ -25,14 +25,12 @@ const Cart = () => {
         <h1>Products cart</h1>
         {products?.map((item) => (
           <div className={cartStyle.item} key={item.id}>
-            {/* <div className={cartStyle.image}> */}
             <Image
-              // src={process.env.REACT_APP_UPLOAD_URL + item.img}
               src={item.img}
               alt="cart product image"
               style={{ objectFit: "cover" }}
-              width={500}
-              height={1000}
+              width={80}
+              height={100}
               className={cartStyle.image}
             />
             {/* </div> */}

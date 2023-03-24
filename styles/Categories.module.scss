@@ -1,8 +1,13 @@
+@import "colors";
+
 .categories {
     display: flex;
     height: 50vh;
     gap: 10px;
     margin: 10px;
+    @media screen and (max-width: 600px) {
+        flex-direction: column;
+    }
 
     .column {
         display: flex;
@@ -33,10 +38,10 @@
             margin: auto;
             cursor: pointer;
             border: none;
-            // background-color: white;
             background-color: transparent;
             text-transform: uppercase;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 20px;
         }
 
         img {
@@ -50,28 +55,20 @@
 .featured {
     width: 100%;
     background-color: #8ACDEA;
-    button {
-        font-size: 2rem;
-    }
+    opacity: .9;
 }
 .trending {
     width: 100%;
     background-color: #857E61;
-    button {
-        font-size: 2rem;
-    }
+    opacity: .9;
 }
 .clothes {
     width: 100%;
     background-color: #FF6542;
-    button {
-        font-size: 2rem;
-    }
+    opacity: .9;
 }
 .accessories {
     width: 100%;
     background-color: #EDD83D;
-    button {
-        font-size: 2rem;
-    }
+    opacity: .9;
 }
