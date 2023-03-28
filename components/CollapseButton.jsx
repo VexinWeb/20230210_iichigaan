@@ -3,6 +3,7 @@ import collapsebuttonStyles from "../styles/Collapse.module.scss";
 
 const Collapse = ({ initialOpened, title, text }) => {
   const [isOpened, setIsOpened] = useState(initialOpened);
+  // const collapse = text.replace(/\n/g, "<br/>");
 
   return (
     <div className={collapsebuttonStyles.collapse}>
@@ -17,8 +18,20 @@ const Collapse = ({ initialOpened, title, text }) => {
       </div>
       <div className={collapsebuttonStyles.collapseText}>
         {isOpened && (
-          <div className={collapsebuttonStyles.collapseTextIsOpened}>
+          <div
+            className={collapsebuttonStyles.collapseTextIsOpened}
+            // dangerouslySetInnerHTML={{ __html: collapse }}
+          >
             {text}
+            {/* {text.split("\n").map((item, key) => {
+              console.log(item);
+              return (
+                <span key={key}>
+                  {item}
+                  <br />
+                </span>
+              );
+            })} */}
           </div>
         )}
       </div>
