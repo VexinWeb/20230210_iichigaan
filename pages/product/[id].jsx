@@ -17,8 +17,11 @@ import { useRouter } from "next/router";
 import useFetch from "../../hooks/useFetch";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartReducer";
+/* import { getStaticPaths, getStaticProps } from "next"; */
 
-const Product = () => {
+const Product = ({ dataGSP }) => {
+  console.log("dataGSP: ", dataGSP);
+
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const id = router.query.id;
@@ -28,7 +31,8 @@ const Product = () => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  // const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  const data = dataGSP;
 
   // const handleImageError = (e) => {
   //   e.target.onerror = null;
@@ -145,14 +149,18 @@ const Product = () => {
                 )}
               </div>
               <div className={productStyle.mainImage}>
-                <Image
-                  className={productStyle.image}
-                  src={data?.attributes?.[selectedImage]?.data?.attributes?.url}
-                  alt={data?.attributes?.img?.data?.attributes?.name}
-                  style={{ objectFit: "cover" }}
-                  width={500}
-                  height={900}
-                />
+                {data?.attributes?.[selectedImage]?.data?.attributes?.url && (
+                  <Image
+                    className={productStyle.image}
+                    src={
+                      data?.attributes?.[selectedImage]?.data?.attributes?.url
+                    }
+                    alt={data?.attributes?.img?.data?.attributes?.name}
+                    style={{ objectFit: "cover" }}
+                    width={500}
+                    height={900}
+                  />
+                )}
               </div>
             </div>
             {/* Right */}
@@ -248,6 +256,47 @@ const Product = () => {
       </div>
     </main>
   );
+};
+
+// Generates `/posts/1` and `/posts/2`
+// export const getStaticPaths = async () => {
+//   const { dataGSP } = await {};
+
+//   return {
+//     paths: [{ params: { id: "1" } }, { params: { id: "2" } }],
+//     fallback: false, // can also be true or 'blocking'
+//   };
+// };
+
+export const getStaticPaths = async () => {
+  // Fetch the list of products to generate the paths
+  const response = await fetch(`https://iichigaan.herokuapp.com/api/products`);
+  const products = await response.json();
+  console.log(products);
+
+  // Generate the paths for each product
+  const paths = products.map((product) => ({
+    params: { id: product.id.toString() },
+  }));
+
+  return {
+    paths,
+    fallback: "blocking",
+  };
+};
+
+export const getStaticProps = async (context) => {
+  const { id } = context.params;
+  const res = await fetch(
+    process.env.REACT_APP_API_URL + `/products/${id}?populate=*`
+  );
+  const dataGSP = await res.json();
+
+  return {
+    props: {
+      dataGSP,
+    },
+  };
 };
 
 export default Product;
