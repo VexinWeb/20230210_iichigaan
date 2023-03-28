@@ -13,9 +13,15 @@ export default function Home() {
   return (
     <div className={homeStyle.home}>
       <Slider />
-      <FeaturedProducts type="featured" />
+      <FeaturedProducts
+        type="featured"
+        text="Discover our featured products! Carefully selected items to meet your fashion needs. "
+      />
       <Categories />
-      <FeaturedProducts type="trending" />
+      <FeaturedProducts
+        type="trending"
+        text="Discover our selection of trendy products for this season!"
+      />
       {/* <Contact /> */}
     </div>
   );

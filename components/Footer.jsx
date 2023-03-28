@@ -16,29 +16,66 @@ const Footer = () => {
           <Collapse
             title="About"
             initialOpened={false}
-            text="L'alimentation joue un rôle crucial dans la prévention et le traitement de la maladie. On considère que les aliments que nous mangeons ont un impact direct sur notre bien-être physique et mental, et peuvent aider à maintenir ou à améliorer notre santé.
-        
-        Dans une société où nombre d'aliments sont transformés, avec des additifs alimentaires et des ingrédients artificiels, nous serons amenés à étudier une alimentation adaptée à vos besoins.  
-        
-        Nous réflérchissons ensemble à une gamme de fruits, légumes, grains entiers, protéines et graisses saines, en fonction de vos besoins individuels et de vos goûts, plutôt que de suivre un régime restrictif ou un plan alimentaire prédéterminé."
+            text="Bienvenue sur ma boutique en ligne !
+
+            Depuis 2015, IICHIGAAN vous propose des créations originales et colorées entièrement réalisées à la main dans son atelier familial situé en Bourgogne.
+            
+            Je sélectionne les plus beaux tissus en parcourant les marchés africains et les mercerie parisiennes et dijonnaise.
+            
+            IICHIGAAN ce sont aussi des étoffes provenant d’Afrique du Sud et des Indes.
+            
+            Entrez dans mon univers coloré et créatif !"
           />
           <Collapse
             title="FAQ"
             initialOpened={false}
-            text="L'alimentation joue un rôle crucial dans la prévention et le traitement de la maladie. On considère que les aliments que nous mangeons ont un impact direct sur notre bien-être physique et mental, et peuvent aider à maintenir ou à améliorer notre santé.
-        
-        Dans une société où nombre d'aliments sont transformés, avec des additifs alimentaires et des ingrédients artificiels, nous serons amenés à étudier une alimentation adaptée à vos besoins.  
-        
-        Nous réflérchissons ensemble à une gamme de fruits, légumes, grains entiers, protéines et graisses saines, en fonction de vos besoins individuels et de vos goûts, plutôt que de suivre un régime restrictif ou un plan alimentaire prédéterminé."
+            text="
+            Q: Quels modes de paiement acceptez-vous ?
+            R: Nous acceptons les paiements par carte de crédit, carte de débit et PayPal. 
+            
+            Q: Combien de temps faut-il pour que ma commande soit expédiée ?
+            R: Nous expédions toutes les commandes dans les 1 à 3 jours ouvrables suivant la réception du paiement.
+            
+            Q: Combien de temps faut-il pour que ma commande arrive ?
+            R: Le délai de livraison dépend de votre emplacement et du mode de livraison que vous avez choisi. Veuillez vous référer à notre page de livraison pour plus d'informations.
+
+            Q: Quid de la douane ?
+            R: Les éventuelles taxes de douane et d'importation sont à la charge des acheteurs. Je ne suis pas responsable des délais causés par la douane.
+            
+            Q: Puis-je retourner un article si je ne suis pas satisfait ?
+            R: Oui, vous pouvez retourner tout article qui ne vous convient pas dans les 30 jours suivant la date d'achat. Veuillez consulter notre politique de retour pour plus d'informations.
+            
+            Q: Comment puis-je contacter votre service clientèle ?
+            R: Vous pouvez nous contacter par e-mail. Nous ferons de notre mieux pour répondre à votre demande dans les plus brefs délais."
           />
           <Collapse
             title="Legal informations"
             initialOpened={false}
-            text="L'alimentation joue un rôle crucial dans la prévention et le traitement de la maladie. On considère que les aliments que nous mangeons ont un impact direct sur notre bien-être physique et mental, et peuvent aider à maintenir ou à améliorer notre santé.
-        
-        Dans une société où nombre d'aliments sont transformés, avec des additifs alimentaires et des ingrédients artificiels, nous serons amenés à étudier une alimentation adaptée à vos besoins.  
-        
-        Nous réflérchissons ensemble à une gamme de fruits, légumes, grains entiers, protéines et graisses saines, en fonction de vos besoins individuels et de vos goûts, plutôt que de suivre un régime restrictif ou un plan alimentaire prédéterminé."
+            text="
+            Informations légales
+
+            Nom de la société : [Nom de la société]
+            Adresse du siège social : [Adresse du siège social]
+            Numéro de téléphone : [Numéro de téléphone]
+            Adresse e-mail : [Adresse e-mail]
+
+            Directeur de publication : [Nom du directeur de publication]
+            Numéro SIRET : [Numéro SIRET de la société]
+            Numéro de TVA intracommunautaire : [Numéro de TVA intracommunautaire de la société]
+
+            Hébergement : [Nom de l'hébergeur]
+            Adresse de l'hébergeur : [Adresse de l'hébergeur]
+            Numéro de téléphone de l'hébergeur : [Numéro de téléphone de l'hébergeur]
+            Adresse e-mail de l'hébergeur : [Adresse e-mail de l'hébergeur]
+
+            Le site est la propriété de [Nom de la société], enregistrée au RCS de [Ville d'enregistrement] sous le numéro [Numéro d'enregistrement]. Tous les contenus présents sur le site, y compris les textes, les images, les vidéos, les logos et les marques, sont protégés par les lois françaises et internationales sur le droit d'auteur et la propriété intellectuelle.
+
+            En utilisant le site, vous acceptez les conditions d'utilisation décrites dans nos mentions légales et dans notre politique de confidentialité. Nous nous réservons le droit de modifier ces conditions à tout moment, sans préavis.
+
+            Pour toute question ou réclamation concernant le site, vous pouvez nous contacter à l'adresse e-mail [Adresse e-mail] ou par courrier postal à l'adresse suivante : [Adresse postale de la société].
+
+            Nous vous remercions de votre visite sur notre site et nous espérons que vous y trouverez les produits qui répondront à vos attentes.
+            "
           />
         </div>
         {/* <div className={footerStyle.top}>
