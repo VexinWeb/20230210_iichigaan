@@ -4,7 +4,7 @@ import featuredStyle from "../styles/Featured.module.scss";
 import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 
-const FeaturedProducts = ({ type }) => {
+const FeaturedProducts = ({ type, text }) => {
   // Fetching products and images from <Strapi></Strapi>
   const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][type][$eq]=${type}`
@@ -15,14 +15,8 @@ const FeaturedProducts = ({ type }) => {
       {/* <Loader /> */}
       <div className={featuredStyle.top}>
         <h1>{type}</h1>
-        <p>
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus
-          impedit a voluptate odio, sunt unde iusto quo illum voluptas magnam?
-          Amet quibusdam quo maxime fugiat tenetur esse dolorem vero. Libero
-          eligendi praesentium dicta enim ipsam nesciunt! Animi, cum incidunt
-          vitae est impedit fugit deserunt neque laboriosam rerum consequuntur
-          repellendus nemo corporis similique!
-        </p>
+        <p>{text}</p>
+        {/* <p>Discover our selection of trendy products for this season!</p> */}
       </div>
       <div className={featuredStyle.bottom}>
         {error ? (

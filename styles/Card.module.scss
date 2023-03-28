@@ -1,16 +1,17 @@
 .card {
-    max-width: 300px;
+    max-width: 350px;
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-bottom: 50px;
     @media screen and (max-width: 600px) {
         margin-bottom: 0px;
+        margin: 0 10px;
         gap: 5px;
     }
     
     .image {
-        width: 300px;
+        width: 330px;
         height: 400px;
         overflow: hidden;
         position: relative;
