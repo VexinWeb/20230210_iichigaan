@@ -19,20 +19,19 @@ import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartReducer";
 /* import { getStaticPaths, getStaticProps } from "next"; */
 
-const Product = ({ dataGSP }) => {
-  console.log("dataGSP: ", dataGSP);
+const Product = ({ product }) => {
+  console.log("product: ", product);
 
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const id = router.query.id;
-  console.log("productsId: ", id);
 
   const [selectedImage, setSelectedImage] = useState("img");
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
   // const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
-  const data = dataGSP;
+  const data = product.data;
 
   // const handleImageError = (e) => {
   //   e.target.onerror = null;
@@ -44,9 +43,6 @@ const Product = ({ dataGSP }) => {
     <main className={styles.main}>
       <Meta title="Product" />
       <div className={productStyle.product}>
-        {loading ? (
-          <Loader />
-        ) : (
           <>
             {/* Left */}
             <div className={productStyle.left}>
@@ -252,7 +248,6 @@ const Product = ({ dataGSP }) => {
               <hr />
             </div>
           </>
-        )}
       </div>
     </main>
   );
@@ -270,12 +265,16 @@ const Product = ({ dataGSP }) => {
 
 export const getStaticPaths = async () => {
   // Fetch the list of products to generate the paths
-  const response = await fetch(`https://iichigaan.herokuapp.com/api/products`);
+  const response = await fetch(`https://iichigaan.herokuapp.com/api/products`, {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
+    }
+  });
   const products = await response.json();
   console.log(products);
 
   // Generate the paths for each product
-  const paths = products.map((product) => ({
+  const paths = products.data.map((product) => ({
     params: { id: product.id.toString() },
   }));
 
@@ -288,13 +287,17 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { id } = context.params;
   const res = await fetch(
-    process.env.REACT_APP_API_URL + `/products/${id}?populate=*`
+    process.env.REACT_APP_API_URL + `/products/${id}?populate=*`, {
+        headers: {
+          Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
+        }
+      }
   );
-  const dataGSP = await res.json();
+  const product = await res.json();
 
   return {
     props: {
-      dataGSP,
+      product,
     },
   };
 };
