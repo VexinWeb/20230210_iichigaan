@@ -6,7 +6,7 @@ import List from "../../components/List";
 import { useRouter } from "next/router";
 import useFetch from "../../hooks/useFetch";
 
-const Products = () => {
+const Products = ({ products }) => {
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const catId = router.query.id;
@@ -15,12 +15,14 @@ const Products = () => {
   // Filters
   const [sort, setSort] = useState("desc");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
+  const data = products;
+  console.log("products :", data);
 
   // Fetching sub-categories from Strapi
-  const { data, loading, error } = useFetch(
+  /* const { data, loading, error } = useFetch(
     `/product_types?filters[categories][id][$eq]=${catId}`
   );
-  console.log(data);
+  console.log("data: ", data); */
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -83,15 +85,58 @@ const Products = () => {
         {/* Right */}
         <div className={productsStyle.right}>
           <List
-            catId={catId}
             // maxPrice={maxPrice}
+            /* catId={catId}
             sort={sort}
-            subCats={selectedSubCats}
+            subCats={selectedSubCats} */
+            products={data}
           />
         </div>
       </div>
     </main>
   );
+};
+
+export const getStaticPaths = async () => {
+  const response = await fetch(`https://iichigaan.herokuapp.com/api/products`, {
+    headers: {
+      Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
+    },
+  });
+  const products = await response.json();
+  console.log(products);
+
+  const paths = products.data.map((product) => ({
+    params: { id: product.id.toString() },
+  })); //
+
+  return {
+    paths,
+    // fallback: blocking,
+    fallback: false,
+  };
+};
+
+export const getStaticProps = async ({ context }) => {
+  //
+  /* const { id } = context.params; */
+  //
+  const response = await fetch(
+    process.env.REACT_APP_API_URL +
+      `/products?populate=*&filters[categories][id]=1&sort=price:desc`,
+    {
+      headers: {
+        Authorization: "Bearer" + process.env.REACT_APP_API_TOKEN,
+      },
+    }
+  );
+  const products = await response.json();
+
+  return {
+    props: {
+      products,
+    },
+  };
 };
 
 export default Products;
