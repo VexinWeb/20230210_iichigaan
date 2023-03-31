@@ -68,16 +68,16 @@ const Navbar = () => {
           <div className={navbarStyle.rightMenu}>
             <div className={navbarStyle.item}>
               <Link
-                href="/products/1"
-                className={router.asPath == "/products/1" ? "active" : ""}
+                href="/products/[id]" as="/products/clothes"
+                className={router.asPath == "/products/clothes" ? "active" : ""}
               >
                 Clothes
               </Link>
             </div>
             <div className={navbarStyle.item}>
               <Link
-                href="/products/2"
-                className={router.asPath == "/products/2" ? "active" : ""}
+                href="/products/[id]" as="/products/accessories"
+                className={router.asPath == "/products/accessories" ? "active" : ""}
               >
                 Accessories
               </Link>

@@ -11,11 +11,11 @@ const List = ({ subCats, sort, catId, products }) => {
       (item) => `&filters[product_types][id][$eq]=${item}`
     )}&sort=price:${sort}`
   ); */
-  const data = products;
+  console.log(products)
 
   return (
     <div className={listStyle.list}>
-      {data?.map((item) => (
+      {products?.map((item) => (
         <Card item={item} key={item.id} />
       ))}
     </div>

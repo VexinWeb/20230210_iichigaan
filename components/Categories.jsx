@@ -11,7 +11,8 @@ const Categories = () => {
         <div className={categoriesStyle.row}>
           <div className={categoriesStyle.clothes}>
             <button>
-              <Link className={categoriesStyle.link} href="/products/1">
+              {/*<Link className={categoriesStyle.link} href="/products/1">*/}
+              <Link className={categoriesStyle.link} href="/products/[id]" as="/products/clothes">
                 Clothes
               </Link>
             </button>
@@ -20,7 +21,7 @@ const Categories = () => {
         <div className={categoriesStyle.row}>
           <div className={categoriesStyle.accessories}>
             <button>
-              <Link className={categoriesStyle.link} href="/products/2">
+              <Link className={categoriesStyle.link} href="/products/[id]" as="/products/accessories">
                 Accessories
               </Link>
             </button>

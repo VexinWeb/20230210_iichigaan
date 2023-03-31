@@ -15,7 +15,8 @@ const Products = ({ products }) => {
   // Filters
   const [sort, setSort] = useState("desc");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
-  const data = products;
+  const [selectedSubCategories, setSelectedSubCategories] = useState(new Set());
+  const data = products.data;
   console.log("products :", data);
 
   // Fetching sub-categories from Strapi
@@ -23,6 +24,35 @@ const Products = ({ products }) => {
     `/product_types?filters[categories][id][$eq]=${catId}`
   );
   console.log("data: ", data); */
+
+  /*const sortedProducts = React.useMemo(() => {
+    if (sort === "asc") {
+      return data.slice().sort((a, b) => a.attributes.price - b.attributes.price);
+    } else if (sort === "desc") {
+      return data.slice().sort((a, b) => b.attributes.price - a.attributes.price);
+    } else {
+      return data;
+    }
+  }, [data, sort]);*/
+
+  const sortedAndFilteredProducts = React.useMemo(() => {
+    let sortedData = data.slice();
+
+    if (sort === "asc") {
+      sortedData.sort((a, b) => a.attributes.price - b.attributes.price);
+    } else if (sort === "desc") {
+      sortedData.sort((a, b) => b.attributes.price - a.attributes.price);
+    }
+
+    return sortedData.filter((product) => {
+      if (selectedSubCategories.size === 0) {
+        return true;
+      }
+      return product.attributes.product_types.data.some(
+          (productType) => selectedSubCategories.has(productType.attributes.title)
+      );
+    });
+  }, [data, sort, selectedSubCategories]);
 
   const handleChange = (e) => {
     const value = e.target.value;
@@ -37,6 +67,16 @@ const Products = ({ products }) => {
 
   console.log("subCats: ", selectedSubCats);
 
+  const subCategoriesSet = data.reduce((acc, product) => {
+    const productTypes = product.attributes.product_types.data;
+      productTypes.forEach((productType) => {
+      acc.add(productType.attributes.title);
+    });
+    return acc;
+  }, new Set());
+
+  const subCategoriesArray = Array.from(subCategoriesSet);
+
   return (
     <main className={styles.main}>
       <Meta title="Products" />
@@ -45,7 +85,7 @@ const Products = ({ products }) => {
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
             <h1>Sub product categories</h1>
-            {data?.map((item) => (
+            {/*{data?.map((item) => (
               <div className={productsStyle.inputItem} key={item.id}>
                 <input
                   type="checkbox"
@@ -55,6 +95,17 @@ const Products = ({ products }) => {
                 />
                 <label htmlFor={item.id}>{item.attributes.title}</label>
               </div>
+            ))}*/}
+            {subCategoriesArray.map((subCategory, index) => (
+                <div className={productsStyle.inputItem} key={index}>
+                  <input
+                      type="checkbox"
+                      id={subCategory}
+                      value={subCategory}
+                      onChange={handleChange}
+                  />
+                  <label htmlFor={subCategory}>{subCategory}</label>
+                </div>
             ))}
           </div>
           {/* Sort by: */}
@@ -66,7 +117,7 @@ const Products = ({ products }) => {
                 id="asc"
                 value="asc"
                 name="price"
-                onChange={(e) => setSort("asc")}
+                onChange={() => setSort("asc")}
               />
               <label htmlFor="asc">Ascending price</label>
             </div>
@@ -76,7 +127,7 @@ const Products = ({ products }) => {
                 id="desc"
                 value="desc"
                 name="price"
-                onChange={(e) => setSort("desc")}
+                onChange={() => setSort("desc")}
               />
               <label htmlFor="desc">Decreasing price</label>
             </div>
@@ -89,7 +140,7 @@ const Products = ({ products }) => {
             /* catId={catId}
             sort={sort}
             subCats={selectedSubCats} */
-            products={data}
+            products={sortedAndFilteredProducts}
           />
         </div>
       </div>
@@ -97,18 +148,28 @@ const Products = ({ products }) => {
   );
 };
 
+const getCategoryMapping = () => {
+  return {
+    clothes: 1,
+    accessories: 2,
+  };
+};
+
 export const getStaticPaths = async () => {
-  const response = await fetch(`https://iichigaan.herokuapp.com/api/products`, {
+  const categoryMapping = getCategoryMapping();
+  const paths = Object.keys(categoryMapping).map((category) => ({
+    params: { id: category },
+  }));
+  /*const response = await fetch(`https://iichigaan.herokuapp.com/api/products`, {
     headers: {
       Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
     },
   });
   const products = await response.json();
-  console.log(products);
 
   const paths = products.data.map((product) => ({
     params: { id: product.id.toString() },
-  })); //
+  })); //*/
 
   return {
     paths,
@@ -117,21 +178,21 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ context }) => {
-  //
-  /* const { id } = context.params; */
+export const getStaticProps = async (context) => {
+  const alias = context.params.id;
+  const categoryMapping = getCategoryMapping();
+  const categoryId = categoryMapping[alias];
   //
   const response = await fetch(
     process.env.REACT_APP_API_URL +
-      `/products?populate=*&filters[categories][id]=1&sort=price:desc`,
+      `/products?populate=*&filters[categories][id]=${categoryId}`,
     {
       headers: {
-        Authorization: "Bearer" + process.env.REACT_APP_API_TOKEN,
+        Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
       },
     }
   );
   const products = await response.json();
-
   return {
     props: {
       products,
