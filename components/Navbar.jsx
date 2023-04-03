@@ -21,7 +21,6 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
-  console.log(router);
 
   return (
     <div className={navbarStyle.navbar}>
