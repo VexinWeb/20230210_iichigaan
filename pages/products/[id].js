@@ -10,14 +10,12 @@ const Products = ({ products }) => {
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const catId = router.query.id;
-  console.log("productsId: ", catId);
 
   // Filters
   const [sort, setSort] = useState("desc");
   const [selectedSubCats, setSelectedSubCats] = useState([]);
   const [selectedSubCategories, setSelectedSubCategories] = useState(new Set());
   const data = products.data;
-  console.log("products :", data);
 
   // Fetching sub-categories from Strapi
   /* const { data, loading, error } = useFetch(
