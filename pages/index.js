@@ -6,12 +6,16 @@ import Slider from "@/components/Slider";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import Categories from "@/components/Categories";
 import Contact from "@/components/Contact";
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useTranslation } from 'next-i18next'
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home({featuredProducts, trendingProducts}) {
+    const { t } = useTranslation('common')
   return (
     <div className={homeStyle.home}>
+        <p>{t('welcome')}</p>
       <Slider />
       <FeaturedProducts
         type="featured"
@@ -29,7 +33,7 @@ export default function Home({featuredProducts, trendingProducts}) {
   );
 }
 
-export async function getStaticProps() {
+export async function getStaticProps({locale}) {
     const res1 = await fetch(`${process.env.REACT_APP_API_URL}/products?populate=*&[filters][type][$eq]=featured`, {
         headers: {
             Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
@@ -47,7 +51,8 @@ export async function getStaticProps() {
     return {
         props: {
             featuredProducts,
-            trendingProducts
+            trendingProducts,
+            ...(await serverSideTranslations(locale, ['common']))
         },
         revalidate: 60,
     }
