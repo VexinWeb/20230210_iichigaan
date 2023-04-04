@@ -3,8 +3,9 @@ import "../styles/globals.css";
 import { Provider } from "react-redux";
 import { persistor, store } from "../redux/store";
 import { PersistGate } from "redux-persist/integration/react";
+import { appWithTranslation } from 'next-i18next'
 
-export default function App({ Component, pageProps }) {
+function App({ Component, pageProps }) {
   return (
     <Provider store={store}>
       <PersistGate loading={"loading"} persistor={persistor}>
@@ -15,3 +16,5 @@ export default function App({ Component, pageProps }) {
     </Provider>
   );
 }
+
+export default appWithTranslation(App);
