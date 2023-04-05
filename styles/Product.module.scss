@@ -93,7 +93,7 @@
                 font-size: 20px;
             }
             @media screen and (max-width: 600px) {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
         .price {
@@ -107,7 +107,7 @@
                 font-size: 15px;
             }
             @media screen and (max-width: 600px) {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
         p {
@@ -115,10 +115,10 @@
             font-weight: 300;
             text-align: justify;
             @media screen and (max-width: 800px) {
-                font-size: 14px;
+                font-size: 15px;
             }
             @media screen and (max-width: 600px) {
-                font-size: 12px;
+                font-size: 14px;
             }
         }
         .quantity {
@@ -126,10 +126,10 @@
             align-items: center;
             gap: 10px;
             @media screen and (max-width: 800px) {
-                font-size: 14px;
+                font-size: 15px;
             }
             @media screen and (max-width: 600px) {
-                font-size: 12px;
+                font-size: 14px;
             }
             button {
                 width: 50px;
@@ -162,10 +162,10 @@
             font-weight: 500;
             margin-bottom: 20px;
             @media screen and (max-width: 800px) {
-                font-size: 14px;
+                font-size: 15px;
             }
             @media screen and (max-width: 600px) {
-                font-size: 12px;
+                font-size: 14px;
             }
             .icon {
                 font-size: 20px;
@@ -215,18 +215,18 @@
                     color: gray;
                 }
                 @media screen and (max-width: 800px) {
-                    font-size: 14px;
+                    font-size: 15px;
                 }
                 @media screen and (max-width: 600px) {
-                    font-size: 12px;
+                    font-size: 14px;
                 }
                 .icon {
                     font-size: 20px;
                     @media screen and (max-width: 800px) {
-                        font-size: 16px;
+                        font-size: 17px;
                     }
                     @media screen and (max-width: 600px) {
-                        font-size: 14px;
+                        font-size: 16px;
                     }
                 }
             }
