@@ -21,34 +21,43 @@ const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
+  const { asPath } = router;
+  /*  const { pathname, asPath } = router;
+  const changeLanguage = () => {
+    router.push({ pathname }, asPath, { locale: nextLocale });
+  }; */
 
   return (
     <div className={navbarStyle.navbar}>
       <div className={navbarStyle.wrapper}>
         <div className={navbarStyle.left}>
           <div className={navbarStyle.item}>
-            <div className={navbarStyle.language}>
-              <Image
-                src="/english.png"
-                alt="French flag"
-                style={{
-                  objectFit: "cover",
-                }}
-                width={25}
-                height={18}
-              />
-            </div>
-            <div className={navbarStyle.language}>
-              <Image
-                src="/french.png"
-                alt="French flag"
-                style={{
-                  objectFit: "cover",
-                }}
-                width={25}
-                height={18}
-              />
-            </div>
+            <Link href={asPath} locale="en">
+              <div className={navbarStyle.language}>
+                <Image
+                  src="/english.png"
+                  alt="French flag"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  width={25}
+                  height={18}
+                />
+              </div>
+            </Link>
+            <Link href={asPath} locale="fr">
+              <div className={navbarStyle.language}>
+                <Image
+                  src="/french.png"
+                  alt="French flag"
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  width={25}
+                  height={18}
+                />
+              </div>
+            </Link>
           </div>
         </div>
         <div className={navbarStyle.center}>
@@ -67,7 +76,8 @@ const Navbar = () => {
           <div className={navbarStyle.rightMenu}>
             <div className={navbarStyle.item}>
               <Link
-                href="/products/[id]" as="/products/clothes"
+                href="/products/[id]"
+                as="/products/clothes"
                 className={router.asPath == "/products/clothes" ? "active" : ""}
               >
                 Clothes
@@ -75,8 +85,11 @@ const Navbar = () => {
             </div>
             <div className={navbarStyle.item}>
               <Link
-                href="/products/[id]" as="/products/accessories"
-                className={router.asPath == "/products/accessories" ? "active" : ""}
+                href="/products/[id]"
+                as="/products/accessories"
+                className={
+                  router.asPath == "/products/accessories" ? "active" : ""
+                }
               >
                 Accessories
               </Link>

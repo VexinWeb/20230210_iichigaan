@@ -9,6 +9,15 @@ const Meta = ({ title, keywords, description }) => {
       <meta name="description" content={description} />
       <meta charSet="utf-8" />
       <link rel="icon" href="/favicon.ico" />
+      {/*  */}
+      {/* <link
+        rel="preload"
+        href="/fonts/NunitoSans-Regular.ttf"
+        as="font"
+        type="font/ttf"
+        crossOrigin="anonymous"
+      /> */}
+      {/*  */}
       <title>{title}</title>
     </Head>
   );
