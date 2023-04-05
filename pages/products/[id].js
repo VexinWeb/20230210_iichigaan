@@ -5,8 +5,11 @@ import styles from "../../styles/Layout.module.scss";
 import List from "../../components/List";
 import { useRouter } from "next/router";
 import useFetch from "../../hooks/useFetch";
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 const Products = ({ products }) => {
+  const { t } = useTranslation("common");
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const catId = router.query.id;
@@ -46,8 +49,8 @@ const Products = ({ products }) => {
       if (selectedSubCategories.size === 0) {
         return true;
       }
-      return product.attributes.product_types.data.some(
-          (productType) => selectedSubCategories.has(productType.attributes.title)
+      return product.attributes.product_types.data.some((productType) =>
+        selectedSubCategories.has(productType.attributes.title)
       );
     });
   }, [data, sort, selectedSubCategories]);
@@ -67,7 +70,7 @@ const Products = ({ products }) => {
 
   const subCategoriesSet = data.reduce((acc, product) => {
     const productTypes = product.attributes.product_types.data;
-      productTypes.forEach((productType) => {
+    productTypes.forEach((productType) => {
       acc.add(productType.attributes.title);
     });
     return acc;
@@ -80,6 +83,7 @@ const Products = ({ products }) => {
       <Meta title="Products" />
       <div className={productsStyle.products}>
         {/* Left */}
+        <p>{t("welcome")}</p>
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
             <h1>Sub product categories</h1>
@@ -95,15 +99,15 @@ const Products = ({ products }) => {
               </div>
             ))}*/}
             {subCategoriesArray.map((subCategory, index) => (
-                <div className={productsStyle.inputItem} key={index}>
-                  <input
-                      type="checkbox"
-                      id={subCategory}
-                      value={subCategory}
-                      onChange={handleChange}
-                  />
-                  <label htmlFor={subCategory}>{subCategory}</label>
-                </div>
+              <div className={productsStyle.inputItem} key={index}>
+                <input
+                  type="checkbox"
+                  id={subCategory}
+                  value={subCategory}
+                  onChange={handleChange}
+                />
+                <label htmlFor={subCategory}>{subCategory}</label>
+              </div>
             ))}
           </div>
           {/* Sort by: */}
@@ -176,7 +180,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
+export const getStaticProps = async ({ context, locale }) => {
   const alias = context.params.id;
   const categoryMapping = getCategoryMapping();
   const categoryId = categoryMapping[alias];
@@ -194,6 +198,7 @@ export const getStaticProps = async (context) => {
   return {
     props: {
       products,
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 };

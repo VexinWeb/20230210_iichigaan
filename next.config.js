@@ -29,7 +29,7 @@ const nextConfig = {
         destination: "/products/2",
       },
     ];
-  }
+  },
 };
 
 module.exports = nextConfig;

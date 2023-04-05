@@ -16,7 +16,7 @@ const Footer = () => {
           <Collapse
             title="About"
             initialOpened={false}
-            text="Bienvenue sur ma boutique en ligne !
+            text={`Bienvenue sur ma boutique en ligne ! 
 
             Depuis 2015, IICHIGAAN vous propose des créations originales et colorées entièrement réalisées à la main dans son atelier familial situé en Bourgogne.
             
@@ -24,15 +24,15 @@ const Footer = () => {
             
             IICHIGAAN ce sont aussi des étoffes provenant d’Afrique du Sud et des Indes.
             
-            Entrez dans mon univers coloré et créatif !"
+            Entrez dans mon univers coloré et créatif !`}
           />
           <Collapse
             title="FAQ"
             initialOpened={false}
-            text="
+            text={`
             Q: Quels modes de paiement acceptez-vous ?
             R: Nous acceptons les paiements par carte de crédit, carte de débit et PayPal. 
-            
+      
             Q: Combien de temps faut-il pour que ma commande soit expédiée ?
             R: Nous expédions toutes les commandes dans les 1 à 3 jours ouvrables suivant la réception du paiement.
             
@@ -46,12 +46,12 @@ const Footer = () => {
             R: Oui, vous pouvez retourner tout article qui ne vous convient pas dans les 30 jours suivant la date d'achat. Veuillez consulter notre politique de retour pour plus d'informations.
             
             Q: Comment puis-je contacter votre service clientèle ?
-            R: Vous pouvez nous contacter par e-mail. Nous ferons de notre mieux pour répondre à votre demande dans les plus brefs délais."
+            R: Vous pouvez nous contacter par e-mail. Nous ferons de notre mieux pour répondre à votre demande dans les plus brefs délais.`}
           />
           <Collapse
             title="Legal informations"
             initialOpened={false}
-            text="
+            text={`
             Informations légales
 
             Nom de la société : [Nom de la société]
@@ -75,39 +75,9 @@ const Footer = () => {
             Pour toute question ou réclamation concernant le site, vous pouvez nous contacter à l'adresse e-mail [Adresse e-mail] ou par courrier postal à l'adresse suivante : [Adresse postale de la société].
 
             Nous vous remercions de votre visite sur notre site et nous espérons que vous y trouverez les produits qui répondront à vos attentes.
-            "
+            `}
           />
         </div>
-        {/* <div className={footerStyle.top}>
-          <div className={footerStyle.item}>
-            <h1>More informations</h1>
-            <span className={footerStyle.link}>
-              <Link
-                href="/about"
-                className={router.asPath == "/about" ? "active" : ""}
-              >
-                About
-              </Link>
-            </span>
-            <span className={footerStyle.link}>
-              <Link
-                href="/faq"
-                className={router.asPath == "/about" ? "active" : ""}
-              >
-                FAQ
-              </Link>
-            </span>
-            <span className={footerStyle.link}>
-              <Link
-                href="/legal"
-                className={router.asPath == "/about" ? "active" : ""}
-              >
-                Legal informations
-              </Link>
-            </span>
-          </div>
-          <div className={footerStyle.item}></div>
-        </div> */}
         {/* Bottom */}
         <div className={footerStyle.bottom}>
           <div className={footerStyle.left}>
@@ -140,7 +110,6 @@ const Footer = () => {
             />
           </span>
           <div className={footerStyle.right}>
-            {/* <span className={footerStyle.vexinweb}> */}
             <a href="https://vexinweb.fr/">
               Site réalisé par l&apos;agence
               <Image
