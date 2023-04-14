@@ -83,7 +83,6 @@ const Products = ({ products }) => {
       <Meta title="Products" />
       <div className={productsStyle.products}>
         {/* Left */}
-        <p>{t("welcome")}</p>
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
             <h1>Sub product categories</h1>
@@ -158,21 +157,16 @@ const getCategoryMapping = () => {
 };
 
 export const getStaticPaths = async () => {
-  const categoryMapping = getCategoryMapping();
+  /*const categoryMapping = getCategoryMapping();
   const paths = Object.keys(categoryMapping).map((category) => ({
     params: { id: category },
-  }));
-  /*const response = await fetch(`https://iichigaan.herokuapp.com/api/products`, {
-    headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
-    },
-  });
-  const products = await response.json();
-
-  const paths = products.data.map((product) => ({
-    params: { id: product.id.toString() },
-  })); //*/
-
+  }));*/
+  const paths = [
+    { params: { id: "1" }, locale: "en" },
+    { params: { id: "2" }, locale: "en" },
+    { params: { id: "1" }, locale: "fr" },
+    { params: { id: "2" }, locale: "fr" },
+  ]
   return {
     paths,
     // fallback: blocking,
@@ -180,19 +174,30 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({ context, locale }) => {
-  const alias = context.params.id;
+export const getStaticProps = async ({ params, locale }) => {
+  /*const alias = context.params.id;
   const categoryMapping = getCategoryMapping();
-  const categoryId = categoryMapping[alias];
+  const categoryId = categoryMapping[alias];*/
+
   //
-  const response = await fetch(
-    process.env.REACT_APP_API_URL +
-      `/products?populate=*&filters[categories][id]=${categoryId}`,
+  /*const response = await fetch(
+    process.env.NEXT_CLIENT_API_URL +
+      `/products?locale=${locale}&populate=*&filters[categories][id]=${id}`,
     {
       headers: {
-        Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
+        Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
       },
     }
+  );
+  const products = await response.json();*/
+  const response = await fetch(
+      process.env.NEXT_CLIENT_API_URL +
+      `/products?locale=${locale}&populate=*&filters[categories][id]=${params.id}`,
+      {
+        headers: {
+          Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
+        },
+      }
   );
   const products = await response.json();
   return {

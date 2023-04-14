@@ -20,8 +20,7 @@ import { addToCart } from "@/redux/cartReducer";
 /* import { getStaticPaths, getStaticProps } from "next"; */
 
 const Product = ({ product }) => {
-  console.log("product: ", product);
-
+  console.log(product)
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const id = router.query.id;
@@ -253,16 +252,16 @@ export const getStaticPaths = async () => {
   // Fetch the list of products to generate the paths
   const response = await fetch(`https://iichigaan.herokuapp.com/api/products`, {
     headers: {
-      Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
+      Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
     },
   });
   const products = await response.json();
-  console.log(products);
 
   // Generate the paths for each product
-  const paths = products.data.map((product) => ({
-    params: { id: product.id.toString() },
-  }));
+  const paths = products.data.flatMap((product) => ([
+  { params: { id: product.id.toString() },locale: 'en'},
+  { params: { id: product.id.toString() },locale: 'fr'}
+  ]));
 
   return {
     paths,
@@ -270,13 +269,13 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context) => {
-  const { id } = context.params;
+export const getStaticProps = async ({params, locale}) => {
+  const { id } = params;
   const res = await fetch(
-    process.env.REACT_APP_API_URL + `/products/${id}?populate=*`,
+    process.env.NEXT_CLIENT_API_URL + `/products/${id}?locale=${locale}&?populate=*`,
     {
       headers: {
-        Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
+        Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
       },
     }
   );
