@@ -27,7 +27,7 @@ const nextConfig = {
       {
         source: "/products/accessories",
         destination: "/products/2",
-      },
+      }
     ];
   },
 };

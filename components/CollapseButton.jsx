@@ -3,7 +3,6 @@ import collapsebuttonStyles from "../styles/Collapse.module.scss";
 
 const Collapse = ({ initialOpened, title, text }) => {
   const lines = text.split("\n");
-  console.log(lines);
   const [isOpened, setIsOpened] = useState(initialOpened);
 
   return (
