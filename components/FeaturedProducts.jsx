@@ -9,6 +9,7 @@ const FeaturedProducts = ({ type, text, products }) => {
   // Fetching products and images from <Strapi></Strapi>
   /*const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][type][$eq]=${type}`
+    console.log(text)
   );
   console.log(data);*/
   return (
