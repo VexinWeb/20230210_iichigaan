@@ -1,37 +1,27 @@
 import React, { useState } from "react";
 import navbarStyle from "../styles/Navbar.module.scss";
 import Image from "next/image";
-// import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
-import SearchIcon from "@mui/icons-material/Search";
-import PersonOutlineIcon from "@mui/icons-material/PersonOutline";
-import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-// import { styled } from "@mui/material/styles";
 import Link from "next/link";
 import Cart from "./Cart";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
-
-// const RedSearchIcon = styled(SearchIcon)({
-//   color: "red",
-// });
+import { useTranslation } from "next-i18next";
 
 const Navbar = () => {
+  const { t } = useTranslation("common");
   const products = useSelector((state) => state.cart.products);
   const [open, setOpen] = useState(false);
 
   const router = useRouter();
   const { asPath } = router;
-  /*  const { pathname, asPath } = router;
-  const changeLanguage = () => {
-    router.push({ pathname }, asPath, { locale: nextLocale });
-  }; */
 
   return (
     <div className={navbarStyle.navbar}>
       <div className={navbarStyle.wrapper}>
         <div className={navbarStyle.left}>
-          <div className={navbarStyle.item}>
+          {asPath === "/" && (
+              <div className={navbarStyle.item}>
             <Link href={asPath} locale="en">
               <div className={navbarStyle.language}>
                 <Image
@@ -59,6 +49,7 @@ const Navbar = () => {
               </div>
             </Link>
           </div>
+              )}
         </div>
         <div className={navbarStyle.center}>
           <Link href="/" className={router.asPath == "/" ? "active" : ""}>
@@ -80,7 +71,7 @@ const Navbar = () => {
                 as="/products/clothes"
                 className={router.asPath == "/products/clothes" ? "active" : ""}
               >
-                Clothes
+                {t("navbarCategory1")}
               </Link>
             </div>
             <div className={navbarStyle.item}>
@@ -91,7 +82,7 @@ const Navbar = () => {
                   router.asPath == "/products/accessories" ? "active" : ""
                 }
               >
-                Accessories
+                {t("navbarCategory2")}
               </Link>
             </div>
           </div>
@@ -103,9 +94,6 @@ const Navbar = () => {
               <ShoppingCartIcon
                 style={{
                   fill: "white",
-                  // fontSize: "25px",
-                  // width: "25px",
-                  // height: "25px",
                 }}
               />
               <span>{products.length}</span>

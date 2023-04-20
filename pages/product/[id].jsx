@@ -3,24 +3,20 @@ import Meta from "../../components/Meta";
 import productStyle from "../../styles/Product.module.scss";
 import styles from "../../styles/Layout.module.scss";
 import Image from "next/image";
-// import data from "../../components/dataProduct.json";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
-import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import BalanceIcon from "@mui/icons-material/Balance";
 import PanToolIcon from "@mui/icons-material/PanTool";
 import PublicIcon from "@mui/icons-material/Public";
 import CategoryIcon from "@mui/icons-material/Category";
 import StraightenIcon from "@mui/icons-material/Straighten";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
-import Loader from "@/components/Loader";
 import { useRouter } from "next/router";
-// import useFetch from "../../hooks/useFetch";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartReducer";
-/* import { getStaticPaths, getStaticProps } from "next"; */
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useTranslation } from "next-i18next";
 
 const Product = ({ product }) => {
-  console.log(product)
+  const { t } = useTranslation("common");
   // Routes, identifying url's id (slug)
   const router = useRouter();
   const id = router.query.id;
@@ -29,15 +25,7 @@ const Product = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   const dispatch = useDispatch();
-  // const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
   const data = product.data;
-
-  // const handleImageError = (e) => {
-  //   e.target.onerror = null;
-  //   e.target.src = "/atelier_couture.jpg"; // ou afficher un message d'erreur
-  //   e.target.alt = "atelier couture";
-  // };
-
   return (
     <main className={styles.main}>
       <Meta title="Product" />
@@ -193,7 +181,7 @@ const Product = ({ product }) => {
                 style={{ fill: "white" }}
                 className={productStyle.icon}
               />
-              Add to cart
+              {t("productCardAddToCart")}
             </button>
             <div className={productStyle.info}>
               <span className={productStyle.item}>
@@ -208,7 +196,7 @@ const Product = ({ product }) => {
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                Type of product:{" "}
+                {t("productCardType")}:{" "}
                 {/* {data?.attributes?.product_types?.data[0]?.attributes?.title} */}
                 {data?.attributes?.product_types?.data?.map((type) => (
                   <div key={type.id}> {type.attributes.title}</div>
@@ -220,7 +208,7 @@ const Product = ({ product }) => {
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                Material(s):{" "}
+                {t("productCardMaterials")}:{" "}
                 {data?.attributes?.materials?.map((material) => (
                   <div key={material.id}> {material.material}</div>
                 ))}
@@ -230,14 +218,14 @@ const Product = ({ product }) => {
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                Delivery: 3-5 days
+                {t("productCardDelivery")} 3-5 days
               </span>
               <span className={productStyle.item}>
                 <PanToolIcon
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                Handmade
+                {t("productCardHandmade")}
               </span>
             </div>
             <hr />
@@ -284,6 +272,7 @@ export const getStaticProps = async ({params, locale}) => {
   return {
     props: {
       product,
+      ...(await serverSideTranslations(locale, ["common"])),
     },
   };
 };

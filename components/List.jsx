@@ -11,7 +11,6 @@ const List = ({ subCats, sort, catId, products }) => {
       (item) => `&filters[product_types][id][$eq]=${item}`
     )}&sort=price:${sort}`
   ); */
-  console.log(products)
 
   return (
     <div className={listStyle.list}>

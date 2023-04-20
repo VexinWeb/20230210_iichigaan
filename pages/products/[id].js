@@ -4,7 +4,6 @@ import productsStyle from "../../styles/Products.module.scss";
 import styles from "../../styles/Layout.module.scss";
 import List from "../../components/List";
 import { useRouter } from "next/router";
-import useFetch from "../../hooks/useFetch";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useTranslation } from "next-i18next";
 
@@ -65,8 +64,6 @@ const Products = ({ products }) => {
         : selectedSubCats.filter((item) => item !== value)
     );
   };
-
-  console.log("subCats: ", selectedSubCats);
 
   const subCategoriesSet = data.reduce((acc, product) => {
     const productTypes = product.attributes.product_types.data;
@@ -175,24 +172,17 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params, locale }) => {
-  /*const alias = context.params.id;
-  const categoryMapping = getCategoryMapping();
-  const categoryId = categoryMapping[alias];*/
+  let catId;
+  if (locale === "fr") {
+     catId = params.id === "1" ? 5 : 7 ;
 
-  //
-  /*const response = await fetch(
-    process.env.NEXT_CLIENT_API_URL +
-      `/products?locale=${locale}&populate=*&filters[categories][id]=${id}`,
-    {
-      headers: {
-        Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
-      },
-    }
-  );
-  const products = await response.json();*/
+  } else {
+     catId = params.id === "1" ? 6 : 8 ;
+
+  }
   const response = await fetch(
       process.env.NEXT_CLIENT_API_URL +
-      `/products?locale=${locale}&populate=*&filters[categories][id]=${params.id}`,
+      `/products?locale=${locale}&populate=*&filters[categories][id]=${catId}`,
       {
         headers: {
           Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,

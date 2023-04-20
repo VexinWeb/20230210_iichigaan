@@ -1,10 +1,10 @@
 import React from "react";
 import categoriesStyle from "../styles/Categories.module.scss";
-// import data from "./data.json";
 import Link from "next/link";
-import { border } from "@mui/system";
+import { useTranslation } from "next-i18next";
 
 const Categories = () => {
+  const { t } = useTranslation("common");
   return (
     <div className={categoriesStyle.categories}>
       <div className={categoriesStyle.column}>
@@ -13,7 +13,7 @@ const Categories = () => {
             <button>
               {/*<Link className={categoriesStyle.link} href="/products/1">*/}
               <Link className={categoriesStyle.link} href="/products/[id]" as="/products/clothes">
-                Clothes
+                {t("indexLineCategories1")}
               </Link>
             </button>
           </div>
@@ -22,7 +22,7 @@ const Categories = () => {
           <div className={categoriesStyle.accessories}>
             <button>
               <Link className={categoriesStyle.link} href="/products/[id]" as="/products/accessories">
-                Accessories
+                {t("indexLineCategories2")}
               </Link>
             </button>
           </div>
@@ -35,7 +35,7 @@ const Categories = () => {
               <div className={categoriesStyle.featured}>
                 <button>
                   <Link className={categoriesStyle.link} href="#featured">
-                    Featured
+                    {t("indexLineCategories3")}
                   </Link>
                 </button>
               </div>
@@ -46,7 +46,7 @@ const Categories = () => {
               <div className={categoriesStyle.trending}>
                 <button>
                   <Link className={categoriesStyle.link} href="#trending">
-                    Trending
+                    {t("indexLineCategories4")}
                   </Link>
                 </button>
               </div>
