@@ -2,21 +2,25 @@ import React from "react";
 import Image from "next/image";
 import footerStyle from "../styles/Footer.module.scss";
 import { useRouter } from "next/router";
-import Link from "next/link";
 import Collapse from "./CollapseButton";
-import collapseStyle from "../styles/Collapse.module.scss";
+import { useTranslation } from "next-i18next";
 
 const Footer = () => {
-  const router = useRouter();
+  const { t } = useTranslation("common");
+  const footerCollapseTitle1 = t("footerCollapsesTitles1")
+  const footerCollapseTitle2 = t("footerCollapsesTitles2")
+  const footerCollapseTitle3 = t("footerCollapsesTitles3")
+  const { locale } = useRouter();
   return (
     <div className={footerStyle.footer}>
       <div className={footerStyle.wrapper}>
         {/* Top */}
+          {locale === "fr" && (
         <div className={footerStyle.top}>
-          <Collapse
-            title="About"
-            initialOpened={false}
-            text={`Bienvenue sur ma boutique en ligne ! 
+              <Collapse
+                  title={footerCollapseTitle1}
+                  initialOpened={false}
+                  text={`Bienvenue sur ma boutique en ligne ! 
 
             Depuis 2015, IICHIGAAN vous propose des créations originales et colorées entièrement réalisées à la main dans son atelier familial situé en Bourgogne.
             
@@ -25,9 +29,9 @@ const Footer = () => {
             IICHIGAAN ce sont aussi des étoffes provenant d’Afrique du Sud et des Indes.
             
             Entrez dans mon univers coloré et créatif !`}
-          />
-          <Collapse
-            title="FAQ"
+              />
+            <Collapse
+            title={footerCollapseTitle2}
             initialOpened={false}
             text={`
             Q: Quels modes de paiement acceptez-vous ?
@@ -47,9 +51,9 @@ const Footer = () => {
             
             Q: Comment puis-je contacter votre service clientèle ?
             R: Vous pouvez nous contacter par e-mail. Nous ferons de notre mieux pour répondre à votre demande dans les plus brefs délais.`}
-          />
-          <Collapse
-            title="Legal informations"
+            />
+            <Collapse
+            title={footerCollapseTitle3}
             initialOpened={false}
             text={`
             Informations légales
@@ -76,8 +80,79 @@ const Footer = () => {
 
             Nous vous remercions de votre visite sur notre site et nous espérons que vous y trouverez les produits qui répondront à vos attentes.
             `}
-          />
+            />
         </div>
+          )}
+          {locale === "en" && (
+              <div className={footerStyle.top}>
+                <Collapse
+                    title={footerCollapseTitle1}
+                    initialOpened={false}
+                    text={`Welcome to my online shop! 
+
+            Since 2015, IICHIGAAN has been offering original and colorful creations, entirely handmade in my family workshop located in Burgundy.
+            
+            I carefully select the most beautiful fabrics by scouring African markets and haberdasheries in Paris and Dijon.
+            
+            IICHIGAAN also features fabrics from South Africa and India.
+            
+            Step into my colorful and creative world!`}
+                />
+                <Collapse
+                    title={footerCollapseTitle2}
+                    initialOpened={false}
+                    text={`
+            Q: What payment methods do you accept?
+            A: We accept payments by credit card, debit card, and PayPal.
+            
+            Q: How long does it take for my order to be shipped?
+            A: We ship all orders within 1-3 business days of receiving payment.
+            
+            Q: How long does it take for my order to arrive?
+            A: The delivery time depends on your location and the shipping method you have chosen. Please refer to our delivery page for more information.
+            
+            Q: What about customs?
+            A: Any customs and import taxes are the responsibility of the buyers. I am not responsible for any delays caused by customs.
+            
+            Q: Can I return an item if I am not satisfied?
+            A: Yes, you can return any item that does not suit you within 30 days of the purchase date. Please refer to our return policy for more information.
+            
+            Q: How can I contact your customer service?
+            A: You can contact us by email. We will do our best to respond to your request as soon as possible.`}
+                />
+                <Collapse
+                    title={footerCollapseTitle3}
+                    initialOpened={false}
+                    text={`
+            Legal information
+
+            Company name: [Company name]
+            Headquarters address: [Headquarters address]
+            Phone number: [Phone number]
+            Email address: [Email address]
+            
+            Publication director: [Publication director's name]
+            SIRET number: [Company's SIRET number]
+            Intracommunity VAT number: [Company's intracommunity VAT number]
+            
+            Hosting: [Hosting company name]
+            Hosting company address: [Hosting company address]
+            Hosting company phone number: [Hosting company phone number]
+            Hosting company email address: [Hosting company email address]
+            
+            The website is the property of [Company name], registered with the RCS of [Registration city] under the number [Registration number]. All content on the site, including text, images, videos, logos, and trademarks, is protected by French and international laws on copyright and intellectual property.
+            
+            By using the site, you agree to the terms of use described in our legal notices and privacy policy. We reserve the right to modify these conditions at any time, without notice.
+            
+            For any questions or complaints regarding the site, you can contact us at [Email address] or by postal mail at the following address: [Company postal address].
+            
+            Thank you for visiting our site, and we hope you find the products that meet your expectations.
+            `}
+                />
+              </div>
+          )}
+
+
         {/* Bottom */}
         <div className={footerStyle.bottom}>
           <div className={footerStyle.left}>
@@ -93,7 +168,7 @@ const Footer = () => {
             <span className={footerStyle.copyright}>
               © Copyright 2023
               <br />
-              Tous droits réservés
+              {t("footerCopyright")}
             </span>
           </div>
           <span className={footerStyle.center}>
@@ -111,7 +186,7 @@ const Footer = () => {
           </span>
           <div className={footerStyle.right}>
             <a href="https://vexinweb.fr/">
-              Site réalisé par l&apos;agence
+              {t("footerAgenceWeb")}
               <Image
                 href="https://vexinweb.fr/"
                 src="/logo_vw.png"

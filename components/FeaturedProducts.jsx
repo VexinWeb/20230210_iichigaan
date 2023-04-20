@@ -4,7 +4,7 @@ import featuredStyle from "../styles/Featured.module.scss";
 import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 
-const FeaturedProducts = ({ type, text, products }) => {
+const FeaturedProducts = ({ type, title, text, products }) => {
     const data = products.data;
   // Fetching products and images from <Strapi></Strapi>
   /*const { data, loading, error } = useFetch(
@@ -16,7 +16,7 @@ const FeaturedProducts = ({ type, text, products }) => {
     <div className={featuredStyle.featured} id={type}>
       {/* <Loader /> */}
       <div className={featuredStyle.top}>
-        <h1>{type}</h1>
+        <h1>{title}</h1>
         <p>{text}</p>
         {/* <p>Discover our selection of trendy products for this season!</p> */}
       </div>
