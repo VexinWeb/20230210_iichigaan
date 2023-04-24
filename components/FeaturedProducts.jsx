@@ -5,13 +5,15 @@ import useFetch from "../hooks/useFetch";
 import Loader from "./Loader";
 
 const FeaturedProducts = ({ type, title, text, products }) => {
-    const data = products.data;
+  const data = products.data;
+
   // Fetching products and images from <Strapi></Strapi>
   /*const { data, loading, error } = useFetch(
     `/products?populate=*&[filters][type][$eq]=${type}`
     console.log(text)
   );
   console.log(data);*/
+  console.log(data);
   return (
     <div className={featuredStyle.featured} id={type}>
       {/* <Loader /> */}
@@ -21,9 +23,9 @@ const FeaturedProducts = ({ type, title, text, products }) => {
         {/* <p>Discover our selection of trendy products for this season!</p> */}
       </div>
       <div className={featuredStyle.bottom}>
-        {
-          data?.map((item) => <Card item={item} key={item.id} />)
-        }
+        {data?.map((item) => (
+          <Card item={item} key={item.id} />
+        ))}
       </div>
     </div>
   );
