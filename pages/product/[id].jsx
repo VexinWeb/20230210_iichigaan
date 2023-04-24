@@ -246,10 +246,10 @@ export const getStaticPaths = async () => {
   const products = await response.json();
 
   // Generate the paths for each product
-  const paths = products.data.flatMap((product) => ([
-  { params: { id: product.id.toString() },locale: 'en'},
-  { params: { id: product.id.toString() },locale: 'fr'}
-  ]));
+  const paths = products.data.flatMap((product) => [
+    { params: { id: product.id.toString() }, locale: "en" },
+    { params: { id: product.id.toString() }, locale: "fr" },
+  ]);
 
   return {
     paths,
@@ -257,10 +257,11 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async ({params, locale}) => {
+export const getStaticProps = async ({ params, locale }) => {
   const { id } = params;
   const res = await fetch(
-    process.env.NEXT_CLIENT_API_URL + `/products/${id}?locale=${locale}&?populate=*`,
+    process.env.NEXT_CLIENT_API_URL +
+      `/products/${id}?locale=${locale}&populate=*`,
     {
       headers: {
         Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
