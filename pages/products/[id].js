@@ -163,7 +163,7 @@ export const getStaticPaths = async () => {
     { params: { id: "2" }, locale: "en" },
     { params: { id: "1" }, locale: "fr" },
     { params: { id: "2" }, locale: "fr" },
-  ]
+  ];
   return {
     paths,
     // fallback: blocking,
@@ -174,20 +174,18 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params, locale }) => {
   let catId;
   if (locale === "fr") {
-     catId = params.id === "1" ? 5 : 7 ;
-
+    catId = params.id === "1" ? 5 : 7;
   } else {
-     catId = params.id === "1" ? 6 : 8 ;
-
+    catId = params.id === "1" ? 6 : 8;
   }
   const response = await fetch(
-      process.env.NEXT_CLIENT_API_URL +
+    process.env.NEXT_CLIENT_API_URL +
       `/products?locale=${locale}&populate=*&filters[categories][id]=${catId}`,
-      {
-        headers: {
-          Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
-        },
-      }
+    {
+      headers: {
+        Authorization: "Bearer " + process.env.NEXT_CLIENT_API_TOKEN,
+      },
+    }
   );
   const products = await response.json();
   return {
