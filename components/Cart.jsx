@@ -6,11 +6,12 @@ import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removeItem } from "@/redux/cartReducer";
 import { resetCart } from "@/redux/cartReducer";
-import {useTranslation} from "next-i18next";
+import { useTranslation } from "next-i18next";
 
 const Cart = () => {
   const products = useSelector((state) => state.cart.products);
-  const {t} = useTranslation('common')
+  console.log(products);
+  const { t } = useTranslation("common");
   const totalPrice = () => {
     let total = 0;
     products?.map((item) => {
