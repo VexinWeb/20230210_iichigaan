@@ -7,49 +7,54 @@ import Cart from "./Cart";
 import { useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { useTranslation } from "next-i18next";
+import { useDispatch } from "react-redux";
+import { resetCart } from "@/redux/cartReducer";
 
 const Navbar = () => {
   const { t } = useTranslation("common");
   const products = useSelector((state) => state.cart.products);
   const [open, setOpen] = useState(false);
-
   const router = useRouter();
   const { asPath } = router;
+  const dispatch = useDispatch();
 
   return (
     <div className={navbarStyle.navbar}>
       <div className={navbarStyle.wrapper}>
         <div className={navbarStyle.left}>
           {asPath === "/" && (
-              <div className={navbarStyle.item}>
-            <Link href={asPath} locale="en">
-              <div className={navbarStyle.language}>
-                <Image
-                  src="/english.png"
-                  alt="French flag"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  width={25}
-                  height={18}
-                />
-              </div>
-            </Link>
-            <Link href={asPath} locale="fr">
-              <div className={navbarStyle.language}>
-                <Image
-                  src="/french.png"
-                  alt="French flag"
-                  style={{
-                    objectFit: "cover",
-                  }}
-                  width={25}
-                  height={18}
-                />
-              </div>
-            </Link>
-          </div>
-              )}
+            <div
+              className={navbarStyle.item}
+              onClick={() => dispatch(resetCart())}
+            >
+              <Link href={asPath} locale="en">
+                <div className={navbarStyle.language}>
+                  <Image
+                    src="/english.png"
+                    alt="English flag"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    width={24}
+                    height={18}
+                  />
+                </div>
+              </Link>
+              <Link href={asPath} locale="fr">
+                <div className={navbarStyle.language}>
+                  <Image
+                    src="/french.png"
+                    alt="French flag"
+                    style={{
+                      objectFit: "cover",
+                    }}
+                    width={24}
+                    height={18}
+                  />
+                </div>
+              </Link>
+            </div>
+          )}
         </div>
         <div className={navbarStyle.center}>
           <Link href="/" className={router.asPath == "/" ? "active" : ""}>

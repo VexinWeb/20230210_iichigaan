@@ -184,33 +184,27 @@ const Product = ({ product }) => {
               {t("productCardAddToCart")}
             </button>
             <div className={productStyle.info}>
+              {/* En cours ... */}
               <span className={productStyle.item}>
                 <StraightenIcon
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                *Longueur des manches : 46 cm *Hauteur dos : 76 cm
+                <div className={productStyle.dimension}>
+                  {data?.attributes?.dimensions?.map((dimension) => (
+                    <div key={dimension.id}>{dimension.valeur}</div>
+                  ))}
+                </div>
               </span>
-              <span className={productStyle.item}>
-                <CategoryIcon
-                  style={{ fill: "#FF6542" }}
-                  className={productStyle.icon}
-                />
-                {t("productCardType")}:{" "}
-                {/* {data?.attributes?.product_types?.data[0]?.attributes?.title} */}
-                {data?.attributes?.product_types?.data?.map((type) => (
-                  <div key={type.id}> {type.attributes.title}</div>
-                ))}
-              </span>
-              {/* <span>Tag : t-shirt, women, top</span> */}
+              {/* ... en cours */}
               <span className={productStyle.item}>
                 <PublicIcon
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                {t("productCardMaterials")}:{" "}
+                {t("productCardMaterials")} :
                 {data?.attributes?.materials?.map((material) => (
-                  <div key={material.id}> {material.material}</div>
+                  <div key={material.id}>{material.material}</div>
                 ))}
               </span>
               <span className={productStyle.item}>

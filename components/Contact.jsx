@@ -4,17 +4,26 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import Link from "next/link";
 import Image from "next/image";
+import { useTranslation } from "react-i18next";
 
 const Contact = () => {
+  const { t } = useTranslation("common");
   return (
     <div className={contactStyle.contact}>
       <div className={contactStyle.wrapper}>
         {/* <div className={contactStyle.social}>Contactez @iichigaan</div> */}
-        <div className={contactStyle.iichigaan}>@iichigaan</div>
-        <div className={contactStyle.mail}>
-          <input type="text" placeholder="Entrez votre email..." />
-          <button>Envoyer</button>
+        <div>
+          <a
+            className={contactStyle.iichigaan}
+            href="mailto:nicolas.lorofi@yahoo.fr"
+          >
+            @iichigaan
+          </a>
         </div>
+        {/* <div className={contactStyle.mail}>
+          <input type="email" placeholder={t("contactMailInput")} />
+          <button>{t("contactMailButton")}</button>
+        </div> */}
         <div className={contactStyle.social}>
           {/* <FacebookIcon style={{ fill: "white" }} /> */}
           <Link href="https://www.instagram.com/iichigaan/">
