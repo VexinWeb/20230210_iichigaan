@@ -82,7 +82,8 @@ const Products = ({ products }) => {
         {/* Left */}
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
-            <h1>Sub product categories</h1>
+            {/* <h1>Sub product categories</h1> */}
+            <h1>{t("productsH1")}</h1>
             {/*{data?.map((item) => (
               <div className={productsStyle.inputItem} key={item.id}>
                 <input
@@ -108,7 +109,7 @@ const Products = ({ products }) => {
           </div>
           {/* Sort by: */}
           <div className={productsStyle.filterItem}>
-            <h2>Sort by</h2>
+            <h2>{t("productsH2")}</h2>
             <div className={productsStyle.inputItem}>
               <input
                 type="radio"
@@ -117,7 +118,7 @@ const Products = ({ products }) => {
                 name="price"
                 onChange={() => setSort("asc")}
               />
-              <label htmlFor="asc">Ascending price</label>
+              <label htmlFor="asc">{t("productsH2Label1")}</label>
             </div>
             <div className={productsStyle.inputItem}>
               <input
@@ -127,7 +128,7 @@ const Products = ({ products }) => {
                 name="price"
                 onChange={() => setSort("desc")}
               />
-              <label htmlFor="desc">Decreasing price</label>
+              <label htmlFor="desc">{t("productsH2Label2")}</label>
             </div>
           </div>
         </div>
