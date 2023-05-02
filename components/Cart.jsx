@@ -15,6 +15,7 @@ const stripePromise = loadStripe(
     process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
 );
 
+
 const Cart = () => {
 
   async function handleCheckout(cartItems) {
@@ -37,7 +38,8 @@ const Cart = () => {
   }
 
   const products = useSelector((state) => state.cart.products);
-  const {t} = useTranslation('common')
+  console.log(products);
+  const { t } = useTranslation("common");
   const totalPrice = () => {
     let total = 0;
     products?.map((item) => {

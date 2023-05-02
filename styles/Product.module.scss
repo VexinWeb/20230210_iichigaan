@@ -208,11 +208,23 @@
             .item {
                 display: flex;
                 align-items: center;
-                gap: 10px;
+                gap: 5px;
                 font-size: 14px;
                 color: gray;
                 div {
                     color: gray;
+                }
+                svg {
+                    margin-right: 10px;
+                }
+                .dimension {
+                    display: flex;
+                    flex-direction: row;
+                    gap: 10px;
+                    @media screen and (max-width: 1000px) {
+                        display: flex;
+                        flex-direction: column;
+                    }
                 }
                 @media screen and (max-width: 800px) {
                     font-size: 15px;
