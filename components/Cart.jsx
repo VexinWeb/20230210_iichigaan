@@ -7,8 +7,35 @@ import { useDispatch } from "react-redux";
 import { removeItem } from "@/redux/cartReducer";
 import { resetCart } from "@/redux/cartReducer";
 import {useTranslation} from "next-i18next";
+import { loadStripe } from '@stripe/stripe-js';
+
+// Make sure to call `loadStripe` outside of a component’s render to avoid
+// recreating the `Stripe` object on every render.
+const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+);
 
 const Cart = () => {
+
+  async function handleCheckout(cartItems) {
+    // Récupérer l'instance Stripe
+    const stripe = await stripePromise;
+
+    // Appeler la route du middleware Next.js pour créer la session Stripe
+    const response = await fetch('/api/checkout_sessions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartItems),
+    });
+
+    const { sessionId } = await response.json();
+
+    // Rediriger l'utilisateur vers la page de paiement Stripe
+    await stripe.redirectToCheckout({ sessionId });
+  }
+
   const products = useSelector((state) => state.cart.products);
   const {t} = useTranslation('common')
   const totalPrice = () => {
@@ -53,7 +80,7 @@ const Cart = () => {
           <span>{t("cartSubtotal")}</span>
           <span>{totalPrice()} €</span>
         </div>
-        <button>{t("cartPay")}</button>
+        <button onClick={() => handleCheckout(products)} role="link">{t("cartPay")}</button>
         <span className={cartStyle.reset} onClick={() => dispatch(resetCart())}>
           {t("cartReset")}
         </span>
