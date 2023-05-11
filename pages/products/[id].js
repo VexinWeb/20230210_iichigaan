@@ -75,6 +75,8 @@ const Products = ({ products }) => {
 
   const subCategoriesArray = Array.from(subCategoriesSet);
 
+  console.log(products);
+
   return (
     <main className={styles.main}>
       <Meta title="Products" />
@@ -82,9 +84,12 @@ const Products = ({ products }) => {
         {/* Left */}
         <div className={productsStyle.left}>
           <div className={productsStyle.filterItem}>
-            {/* <h1>Sub product categories</h1> */}
-            <h1>{t("productsH1")}</h1>
-            {/*{data?.map((item) => (
+            <h1>
+              {router.asPath == "/products/clothes"
+                ? t("indexLineCategories1")
+                : t("indexLineCategories2")}
+            </h1>
+            {/* {data?.map((item) => (
               <div className={productsStyle.inputItem} key={item.id}>
                 <input
                   type="checkbox"
@@ -94,7 +99,7 @@ const Products = ({ products }) => {
                 />
                 <label htmlFor={item.id}>{item.attributes.title}</label>
               </div>
-            ))}*/}
+            ))} */}
             {subCategoriesArray.map((subCategory, index) => (
               <div className={productsStyle.inputItem} key={index}>
                 <input
@@ -175,9 +180,9 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async ({ params, locale }) => {
   let catId;
   if (locale === "fr") {
-    catId = params.id === "1" ? 5 : 7;
+    catId = params.id === "1" ? 7 : 5;
   } else {
-    catId = params.id === "1" ? 6 : 8;
+    catId = params.id === "1" ? 8 : 6;
   }
   const response = await fetch(
     process.env.NEXT_CLIENT_API_URL +

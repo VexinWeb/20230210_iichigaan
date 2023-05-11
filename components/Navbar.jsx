@@ -57,15 +57,18 @@ const Navbar = () => {
           )}
         </div>
         <div className={navbarStyle.center}>
-          <Link href="/" className={router.asPath == "/" ? "active" : ""}>
+          {/* <Link href="/" className={router.asPath == "/" ? "active" : ""}> */}
+          <Link href="/">
             <Image
               src="/logo.png"
               alt="logo"
-              style={{ objectFit: "cover", borderRadius: "50%" }}
-              width={50}
-              height={50}
+              // style={{ objectFit: "cover", borderRadius: "50%" }}
+              style={{ objectFit: "cover" }}
+              // width={60}
+              width={150}
+              height={100}
             />
-            <div className={navbarStyle.centerText}>iichigaan</div>
+            {/* <div className={navbarStyle.centerText}>iichigaan</div> */}
           </Link>
         </div>
         <div className={navbarStyle.right}>
@@ -74,7 +77,7 @@ const Navbar = () => {
               <Link
                 href="/products/[id]"
                 as="/products/clothes"
-                className={router.asPath == "/products/clothes" ? "active" : ""}
+                // className={router.asPath == "/products/clothes" ? "active" : ""}
               >
                 {t("navbarCategory1")}
               </Link>
@@ -83,9 +86,9 @@ const Navbar = () => {
               <Link
                 href="/products/[id]"
                 as="/products/accessories"
-                className={
-                  router.asPath == "/products/accessories" ? "active" : ""
-                }
+                // className={
+                //   router.asPath == "/products/accessories" ? "active" : ""
+                // }
               >
                 {t("navbarCategory2")}
               </Link>
@@ -98,7 +101,7 @@ const Navbar = () => {
             >
               <ShoppingCartIcon
                 style={{
-                  fill: "white",
+                  fill: "black",
                 }}
               />
               <span>{products.length}</span>
