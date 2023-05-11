@@ -40,7 +40,7 @@
             border: none;
             background-color: transparent;
             text-transform: uppercase;
-            font-weight: 600;
+            font-weight: 400;
             font-size: 20px;
         }
 
@@ -54,21 +54,29 @@
 
 .featured {
     width: 100%;
-    background-color: #8ACDEA;
-    opacity: .9;
+    border: solid lightgrey; 
+    // background-color: #8ACDEA;
+    // background-color: black;
+    // opacity: .9;
 }
 .trending {
     width: 100%;
-    background-color: #857E61;
-    opacity: .9;
+    border: solid lightgrey; 
+    // background-color: #857E61;
+    // background-color: black;
+    // opacity: .9;
 }
 .clothes {
     width: 100%;
-    background-color: #FF6542;
-    opacity: .9;
+    border: solid lightgrey; 
+    // background-color: #FF6542;
+    // background-color: black;
+    // opacity: .9;
 }
 .accessories {
     width: 100%;
-    background-color: #EDD83D;
-    opacity: .9;
+    border: solid lightgrey; 
+    // background-color: #EDD83D;
+    // background-color: black;
+    // opacity: .9;
 }

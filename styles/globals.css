@@ -35,9 +35,11 @@ a {
   /* background-color: #D2A469; */
   /* background-color: #3F4420; */
   /* background-color: #64523C; */
-  background-color: #FF6542;
-  /* opacity: .9; */
-  color: white;
+  /* background-color: #FF6542; */
+  /* background-color: black; */
+  /* opacity: .8; */
+  /* color: black; */
+  font-weight: 400;
 }
 
 @media screen and (max-width: 700px) {
