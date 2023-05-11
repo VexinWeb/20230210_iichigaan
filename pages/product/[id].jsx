@@ -6,9 +6,10 @@ import Image from "next/image";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import PanToolIcon from "@mui/icons-material/PanTool";
 import PublicIcon from "@mui/icons-material/Public";
-import CategoryIcon from "@mui/icons-material/Category";
+// import CategoryIcon from "@mui/icons-material/Category";
 import StraightenIcon from "@mui/icons-material/Straighten";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import TagIcon from "@mui/icons-material/Tag";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { addToCart } from "@/redux/cartReducer";
@@ -26,6 +27,10 @@ const Product = ({ product }) => {
 
   const dispatch = useDispatch();
   const data = product.data;
+
+  // Line break in product description
+  const lines = data?.attributes?.description?.split("\n");
+
   return (
     <main className={styles.main}>
       <Meta title="Product" />
@@ -150,7 +155,18 @@ const Product = ({ product }) => {
             <span className={productStyle.price}>
               {data?.attributes?.price} €
             </span>
-            <p>{data?.attributes?.description}</p>
+            {/* Product description */}
+            <p>
+              {lines.map((line, key) => {
+                console.log(line);
+                return (
+                  <div key={key}>
+                    {line}
+                    <br />
+                  </div>
+                );
+              })}
+            </p>
             <div className={productStyle.quantity}>
               <button
                 onClick={() =>
@@ -184,19 +200,31 @@ const Product = ({ product }) => {
               {t("productCardAddToCart")}
             </button>
             <div className={productStyle.info}>
-              {/* En cours ... */}
               <span className={productStyle.item}>
                 <StraightenIcon
                   style={{ fill: "#FF6542" }}
                   className={productStyle.icon}
                 />
-                <div className={productStyle.dimension}>
-                  {data?.attributes?.dimensions?.map((dimension) => (
-                    <div key={dimension.id}>{dimension.valeur}</div>
-                  ))}
+                <div className={productStyle.dimensions}>
+                  <div className={productStyle.dimension}>
+                    {data?.attributes?.dimensions?.map((dimension) => (
+                      <div key={dimension.id}>{dimension.valeur}</div>
+                    ))}
+                  </div>
+                  <div className={productStyle.dimension}>
+                    <a href="mailto:nicolas.lorofi@yahoo.fr">
+                      {t("productCardDimension")}
+                    </a>
+                  </div>
                 </div>
               </span>
-              {/* ... en cours */}
+              {/* <span className={productStyle.item}>
+                <StraightenIcon
+                  style={{ fill: "#FF6542" }}
+                  className={productStyle.icon}
+                />
+                <div>Demander une taille personnalisée</div>
+              </span> */}
               <span className={productStyle.item}>
                 <PublicIcon
                   style={{ fill: "#FF6542" }}
@@ -206,6 +234,16 @@ const Product = ({ product }) => {
                 {data?.attributes?.materials?.map((material) => (
                   <div key={material.id}>{material.material}</div>
                 ))}
+              </span>
+              <span className={productStyle.item}>
+                <TagIcon
+                  style={{ fill: "#FF6542" }}
+                  className={productStyle.icon}
+                />
+                {/* Strapi : ajouter un champ tags semblable à materials */}
+                {/* {data?.attributes?.tags?.map((tag) => (
+                  <div key={tag.id}>{tag.tag}</div>
+                ))} */}
               </span>
               <span className={productStyle.item}>
                 <LocalShippingIcon
